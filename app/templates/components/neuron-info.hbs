@@ -1,0 +1,21 @@
+<h1>{{model.name}}</h1>
+
+<ul class="list-inline">
+    <li class="list-inline-item">Users: <span class="label label-info">{{model.stats.users}}</span></li>
+    <li class="list-inline-item">Axons: <span class="label label-primary">{{model.stats.axons}}</span></li>
+    <li class="list-inline-item">Views: <span class="label label-success">{{model.stats.views}}</span></li>
+</ul>
+
+<form class="form-inline">
+    <div class="form-group">
+        <label for="exampleInputName2">URL:</label>
+
+        <p class="form-control-static text-success">{{model.url}}</p>
+    </div>
+</form>
+
+<div class="m-t-1 m-b-2">
+  {{text-editable model=model field="description" multiline=true}}
+</div>
+
+{{yield}}
