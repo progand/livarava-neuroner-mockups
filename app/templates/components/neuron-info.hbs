@@ -10,12 +10,14 @@
     <div class="form-group">
         <label for="exampleInputName2">URL:</label>
 
-        <p class="form-control-static text-success">{{model.url}}</p>
+        <p class="form-control-static text-success">
+          {{content-editable value=model.url  placeholder="Input RSS URL" type="text" allowNewlines=false}}
+        </p>
     </div>
 </form>
 
 <div class="m-t-1 m-b-2">
-  {{text-editable model=model field="description" multiline=true}}
+  {{content-editable value=model.description  placeholder="Edit description..." type="text"}}
 </div>
 
 {{yield}}
