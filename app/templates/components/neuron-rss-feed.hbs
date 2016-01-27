@@ -1,15 +1,14 @@
 {{#if isRSS}}
-    <h4>RSS Feed</h4>
 
-    <form class="form-inline pull-sm-right">
-        <div class="form-group">
-            <label class="c-input c-checkbox">
-              {{input type="checkbox" checked=isFeedTextShown}}
-                <span class="c-indicator"></span>
-                Show text
-            </label>
-        </div>
-    </form>
+    <div class="clearfix">
+        <h4 class="pull-sm-left">RSS Feed</h4>
+
+        <label class="c-input c-checkbox pull-sm-right">
+          {{input type="checkbox" checked=isFeedTextShown}}
+            <span class="c-indicator"></span>
+            Show text
+        </label>
+    </div>
 
     {{#each rssFeedVisible as |rssFeedItem|}}
         <div class="media">
@@ -30,7 +29,9 @@
         </div>
     {{/each}}
     {{#if hasMore}}
-      <div class="m-t-2"><button class="btn btn-primary center-block" {{action "showMore"}}>More</button></div>
+        <div class="m-t-2">
+            <button class="btn btn-primary center-block" {{action "showMore"}}>More</button>
+        </div>
     {{/if}}
 
 {{/if}}
