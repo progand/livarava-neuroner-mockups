@@ -15,7 +15,5 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-.idea
-*.iws
-*/**/workspace.xml
-*/**/tasks.xml
+.idea/
+*.iml
