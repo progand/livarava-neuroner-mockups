@@ -19,7 +19,7 @@ module.exports = function (environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'img-src': "'self' *",
+      'img-src': "'self' * data:",
       'style-src': "'self' 'unsafe-inline'",
     }
   };

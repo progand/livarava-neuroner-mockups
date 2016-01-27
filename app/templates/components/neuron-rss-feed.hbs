@@ -1,22 +1,37 @@
 {{#if isRSS}}
     <h4>RSS Feed</h4>
 
-    {{#each rssFeed as |rssFeedItem|}}
+    <form class="form-inline pull-sm-right">
+        <div class="form-group">
+            <label class="c-input c-checkbox">
+              {{input type="checkbox" checked=isFeedTextShown}}
+                <span class="c-indicator"></span>
+                Show text
+            </label>
+        </div>
+    </form>
+
+    {{#each rssFeedVisible as |rssFeedItem|}}
         <div class="media">
             <div class="media-left">
                 <img class="media-object" width="60" src="{{rssFeedItem.image}}">
             </div>
 
             <div class="media-body">
-                <h4 class="media-heading ">{{rssFeedItem.title}}</h4>
+                <h5 class="media-heading ">{{rssFeedItem.title}}</h5>
 
-                <p>{{{rssFeedItem.text}}}</p>
+              {{#if isFeedTextShown}}
+                  <p>{{{rssFeedItem.text}}}</p>
+              {{/if}}
                 <ul class="list-inline pull-left">
                     <li><span class="text-muted">Published:</span> {{moment-to-now rssFeedItem.date}}</li>
                 </ul>
             </div>
         </div>
     {{/each}}
+    {{#if hasMore}}
+      <div class="m-t-2"><button class="btn btn-primary center-block" {{action "showMore"}}>More</button></div>
+    {{/if}}
 
 {{/if}}
 
