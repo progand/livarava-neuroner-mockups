@@ -642,7 +642,20 @@ define('livarava-neuroner-mockups/components/neuron-article', ['exports', 'ember
   exports['default'] = _ember['default'].Component.extend({});
 });
 define('livarava-neuroner-mockups/components/neuron-connections', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Component.extend({});
+  exports['default'] = _ember['default'].Component.extend({
+    actions: {
+      showMore: function showMore() {
+        this.set('itemsToShow', this.get('itemsToShow') + 5);
+      }
+    },
+    itemsToShow: 5,
+    visibleItems: _ember['default'].computed('model.connections', 'itemsToShow', function () {
+      return this.get('model.connections').slice(0, this.get('itemsToShow'));
+    }),
+    hasMore: _ember['default'].computed('model.connections', 'itemsToShow', function () {
+      return this.get('model.connections').length > this.get('itemsToShow');
+    })
+  });
 });
 define('livarava-neuroner-mockups/components/neuron-general-info', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({});
@@ -651,15 +664,15 @@ define('livarava-neuroner-mockups/components/neuron-rss-feed', ['exports', 'embe
   exports['default'] = _ember['default'].Component.extend({
     actions: {
       showMore: function showMore() {
-        this.set('feedsToShow', this.get('feedsToShow') + 5);
+        this.set('itemsToShow', this.get('itemsToShow') + 5);
       }
     },
-    feedsToShow: 5,
-    rssFeedVisible: _ember['default'].computed('model.feed', 'feedsToShow', function () {
-      return this.get('model.feed').slice(0, this.get('feedsToShow'));
+    itemsToShow: 5,
+    visibleItems: _ember['default'].computed('model.feed', 'itemsToShow', function () {
+      return this.get('model.feed').slice(0, this.get('itemsToShow'));
     }),
-    hasMore: _ember['default'].computed('model.feed', 'feedsToShow', function () {
-      return this.get('model.feed').length > this.get('feedsToShow');
+    hasMore: _ember['default'].computed('model.feed', 'itemsToShow', function () {
+      return this.get('model.feed').length > this.get('itemsToShow');
     })
   });
 });
@@ -2924,7 +2937,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
           dom.setAttribute(el2, "class", "media-body");
           var el3 = dom.createTextNode("\n            ");
           dom.appendChild(el2, el3);
-          var el3 = dom.createElement("h4");
+          var el3 = dom.createElement("h5");
           dom.setAttribute(el3, "class", "media-heading");
           var el4 = dom.createComment("");
           dom.appendChild(el3, el4);
@@ -2960,18 +2973,71 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element0 = dom.childAt(fragment, [1]);
-          var element1 = dom.childAt(element0, [1, 1]);
-          var element2 = dom.childAt(element0, [3]);
+          var element1 = dom.childAt(fragment, [1]);
+          var element2 = dom.childAt(element1, [1, 1]);
+          var element3 = dom.childAt(element1, [3]);
           var morphs = new Array(4);
-          morphs[0] = dom.createAttrMorph(element1, 'src');
-          morphs[1] = dom.createAttrMorph(element1, 'alt');
-          morphs[2] = dom.createMorphAt(dom.childAt(element2, [1]), 0, 0);
-          morphs[3] = dom.createMorphAt(dom.childAt(element2, [3, 1]), 2, 2);
+          morphs[0] = dom.createAttrMorph(element2, 'src');
+          morphs[1] = dom.createAttrMorph(element2, 'alt');
+          morphs[2] = dom.createMorphAt(dom.childAt(element3, [1]), 0, 0);
+          morphs[3] = dom.createMorphAt(dom.childAt(element3, [3, 1]), 2, 2);
           return morphs;
         },
         statements: [["attribute", "src", ["concat", [["get", "neuron.image", ["loc", [null, [6, 45], [6, 57]]]]]]], ["attribute", "alt", ["concat", [["get", "neuron.header", ["loc", [null, [6, 68], [6, 81]]]]]]], ["content", "neuron.header", ["loc", [null, [10, 38], [10, 55]]]], ["inline", "moment-to-now", [["get", "neuron.created", ["loc", [null, [12, 75], [12, 89]]]]], [], ["loc", [null, [12, 59], [12, 91]]]]],
         locals: ["neuron"],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 21,
+              "column": 0
+            }
+          },
+          "moduleName": "livarava-neuroner-mockups/templates/components/neuron-connections.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "m-t-2");
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("button");
+          dom.setAttribute(el2, "class", "btn btn-primary center-block");
+          var el3 = dom.createTextNode("More");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1, 1]);
+          var morphs = new Array(1);
+          morphs[0] = dom.createElementMorph(element0);
+          return morphs;
+        },
+        statements: [["element", "action", ["showMore"], [], ["loc", [null, [19, 53], [19, 74]]]]],
+        locals: [],
         templates: []
       };
     })();
@@ -2989,7 +3055,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
             "column": 0
           },
           "end": {
-            "line": 19,
+            "line": 24,
             "column": 0
           }
         },
@@ -3009,6 +3075,8 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
@@ -3018,14 +3086,15 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(2);
+        var morphs = new Array(3);
         morphs[0] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+        morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
         return morphs;
       },
-      statements: [["block", "each", [["get", "model.connections", ["loc", [null, [3, 8], [3, 25]]]]], [], 0, null, ["loc", [null, [3, 0], [16, 9]]]], ["content", "yield", ["loc", [null, [18, 0], [18, 9]]]]],
+      statements: [["block", "each", [["get", "visibleItems", ["loc", [null, [3, 8], [3, 20]]]]], [], 0, null, ["loc", [null, [3, 0], [16, 9]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [17, 6], [17, 13]]]]], [], 1, null, ["loc", [null, [17, 0], [21, 7]]]], ["content", "yield", ["loc", [null, [23, 0], [23, 9]]]]],
       locals: [],
-      templates: [child0]
+      templates: [child0, child1]
     };
   })());
 });
@@ -3448,7 +3517,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
         morphs[3] = dom.createMorphAt(fragment, 5, 5, contextualElement);
         return morphs;
       },
-      statements: [["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "isFeedTextShown", ["loc", [null, [5, 38], [5, 53]]]]], [], []]], ["loc", [null, [5, 6], [5, 55]]]], ["block", "each", [["get", "rssFeedVisible", ["loc", [null, [11, 8], [11, 22]]]]], [], 0, null, ["loc", [null, [11, 0], [28, 9]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [29, 6], [29, 13]]]]], [], 1, null, ["loc", [null, [29, 0], [33, 7]]]], ["content", "yield", ["loc", [null, [39, 0], [39, 9]]]]],
+      statements: [["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "isFeedTextShown", ["loc", [null, [5, 38], [5, 53]]]]], [], []]], ["loc", [null, [5, 6], [5, 55]]]], ["block", "each", [["get", "visibleItems", ["loc", [null, [11, 8], [11, 20]]]]], [], 0, null, ["loc", [null, [11, 0], [28, 9]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [29, 6], [29, 13]]]]], [], 1, null, ["loc", [null, [29, 0], [33, 7]]]], ["content", "yield", ["loc", [null, [39, 0], [39, 9]]]]],
       locals: [],
       templates: [child0, child1]
     };
@@ -4038,11 +4107,11 @@ define('livarava-neuroner-mockups/transitions', ['exports'], function (exports) 
 
     // this makes our rule apply when the liquid-if transitions to the
     // true state.
-    this.toValue(true), this.use('toLeft'),
+    this.toValue(true), this.use('toLeft', { duration: 300 }),
 
     // which means we can also apply a reverse rule for transitions to
     // the false state.
-    this.reverse('toRight'));
+    this.reverse('toRight', { duration: 300 }));
   };
 });
 /* jshint ignore:start */
