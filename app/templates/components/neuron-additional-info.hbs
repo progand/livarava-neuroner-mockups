@@ -1,0 +1,18 @@
+<div class="clearfix">
+    <div class="btn-group pull-sm-right" data-toggle="buttons">
+        <button class="btn btn-info {{if showingConnections 'btn-info-outline'}}" {{action "showInfo"}}>Info</button>
+        <button class="btn btn-info {{unless showingConnections 'btn-info-outline'}}" {{action "showConnections"}}>
+            Axons
+        </button>
+    </div>
+</div>
+
+<hr>
+{{#if showingConnections}}
+  {{neuron-connections model=model}}
+{{else}}
+  {{neuron-specific-info model=model}}
+{{/if}}
+
+
+{{yield}}
