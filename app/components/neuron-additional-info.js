@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  showingConnections: true,
+  showingConnections: false,
   actions: {
     showInfo(){
       this.set('showingConnections', false);
