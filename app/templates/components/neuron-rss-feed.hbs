@@ -1,40 +1,37 @@
-{{#if isRSS}}
+<div class="clearfix">
+    <h4 class="pull-sm-left">RSS Feed</h4>
 
-    <div class="clearfix">
-        <h4 class="pull-sm-left">RSS Feed</h4>
+    <label class="c-input c-checkbox pull-sm-right">
+      {{input type="checkbox" checked=isFeedTextShown}}
+        <span class="c-indicator"></span>
+        Show text
+    </label>
+</div>
 
-        <label class="c-input c-checkbox pull-sm-right">
-          {{input type="checkbox" checked=isFeedTextShown}}
-            <span class="c-indicator"></span>
-            Show text
-        </label>
+{{#each rssFeedVisible as |rssFeedItem|}}
+    <div class="media">
+        <div class="media-left">
+            <div class="media-object feed-image-{{rssFeedItem.imageIndex}}"></div>
+        </div>
+
+        <div class="media-body">
+            <h5 class="media-heading ">{{rssFeedItem.title}}</h5>
+
+          {{#if isFeedTextShown}}
+              <p>{{{rssFeedItem.text}}}</p>
+          {{/if}}
+            <ul class="list-inline pull-left">
+                <li><span class="text-muted">Published:</span> {{moment-to-now rssFeedItem.date}}</li>
+            </ul>
+        </div>
     </div>
-
-    {{#each rssFeedVisible as |rssFeedItem|}}
-        <div class="media">
-            <div class="media-left">
-                <div class="media-object feed-image-{{rssFeedItem.imageIndex}}"></div>
-            </div>
-
-            <div class="media-body">
-                <h5 class="media-heading ">{{rssFeedItem.title}}</h5>
-
-              {{#if isFeedTextShown}}
-                  <p>{{{rssFeedItem.text}}}</p>
-              {{/if}}
-                <ul class="list-inline pull-left">
-                    <li><span class="text-muted">Published:</span> {{moment-to-now rssFeedItem.date}}</li>
-                </ul>
-            </div>
-        </div>
-    {{/each}}
-    {{#if hasMore}}
-        <div class="m-t-2">
-            <button class="btn btn-primary center-block" {{action "showMore"}}>More</button>
-        </div>
-    {{/if}}
-
+{{/each}}
+{{#if hasMore}}
+    <div class="m-t-2">
+        <button class="btn btn-primary center-block" {{action "showMore"}}>More</button>
+    </div>
 {{/if}}
+
 
 
 

@@ -17,12 +17,9 @@ export default Ember.Route.extend({
           secondWord,
           thirdWord;
 
-        if (_.isEmpty(this.get('model.url'))) {
-          return rssFeed;
-        }
-        [firstWord = 'news', secondWord = 'interesting', thirdWord = 'fascinating'] = _.chain(this.get('model.url')).words().without('feed', 'http', 'https', 'com', 'org').value();
+        [firstWord = 'news', secondWord = 'interesting', thirdWord = 'fascinating'] = _.chain(this.url).words().without('feed', 'http', 'https', 'com', 'org').value();
 
-        _.times(11, index => {
+        _.times(15, index => {
           rssFeed.push({
             imageIndex: _.random(0, 2),
             title: `About ${firstWord} and ${secondWord} #${index}`,

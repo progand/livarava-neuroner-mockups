@@ -60,57 +60,18 @@ define('livarava-neuroner-mockups/components/neuron-general-info', ['exports', '
   exports['default'] = _ember['default'].Component.extend({});
 });
 define('livarava-neuroner-mockups/components/neuron-rss-feed', ['exports', 'ember'], function (exports, _ember) {
-  var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
-
   exports['default'] = _ember['default'].Component.extend({
     actions: {
       showMore: function showMore() {
-        this.set('feedsToShow', this.get('feedsToShow') + 4);
+        this.set('feedsToShow', this.get('feedsToShow') + 5);
       }
     },
-    isRSS: _ember['default'].computed('model.url', function () {
-      return (/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/.test(this.get('model.url'))
-      );
+    feedsToShow: 5,
+    rssFeedVisible: _ember['default'].computed('model.feed', 'feedsToShow', function () {
+      return this.get('model.feed').slice(0, this.get('feedsToShow'));
     }),
-    feedsToShow: 3,
-    rssFeed: _ember['default'].computed('model.url', function () {
-      var rssFeed = [],
-          firstWord,
-          secondWord,
-          thirdWord;
-
-      if (_.isEmpty(this.get('model.url'))) {
-        return rssFeed;
-      }
-
-      var _$chain$words$without$value = _.chain(this.get('model.url')).words().without('feed', 'http', 'https', 'com', 'org').value();
-
-      var _$chain$words$without$value2 = _slicedToArray(_$chain$words$without$value, 3);
-
-      var _$chain$words$without$value2$0 = _$chain$words$without$value2[0];
-      firstWord = _$chain$words$without$value2$0 === undefined ? 'news' : _$chain$words$without$value2$0;
-      var _$chain$words$without$value2$1 = _$chain$words$without$value2[1];
-      secondWord = _$chain$words$without$value2$1 === undefined ? 'interesting' : _$chain$words$without$value2$1;
-      var _$chain$words$without$value2$2 = _$chain$words$without$value2[2];
-      thirdWord = _$chain$words$without$value2$2 === undefined ? 'fascinating' : _$chain$words$without$value2$2;
-
-      _.times(11, function (index) {
-        rssFeed.push({
-          imageIndex: _.random(0, 2),
-          title: 'About ' + firstWord + ' and ' + secondWord + ' #' + index,
-          date: new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now())),
-          text: 'Lorem ipsum dolor sit amet <span class="text-success">' + firstWord + '</span>, consectetur adipiscing elit, sed do eiusmod tempor <span class="text-success">' + secondWord + '</span> incididunt ut labore et dolore magna aliqua <span class="text-success">' + thirdWord + '</span>. Ut enim ad minim veniam, quis nostrud exercitation ullamco <span class="text-success">' + secondWord + '</span> laboris nisi ut aliquip ex ea commodo consequat...'
-
-        });
-      });
-
-      return rssFeed;
-    }),
-    rssFeedVisible: _ember['default'].computed('rssFeed', 'feedsToShow', function () {
-      return this.get('rssFeed').slice(0, this.get('feedsToShow'));
-    }),
-    hasMore: _ember['default'].computed('rssFeed', 'feedsToShow', function () {
-      return this.get('rssFeed').length > this.get('feedsToShow');
+    hasMore: _ember['default'].computed('model.feed', 'feedsToShow', function () {
+      return this.get('model.feed').length > this.get('feedsToShow');
     })
   });
 });
@@ -235,11 +196,7 @@ define('livarava-neuroner-mockups/routes/index', ['exports', 'ember'], function 
               secondWord,
               thirdWord;
 
-          if (_.isEmpty(this.get('model.url'))) {
-            return rssFeed;
-          }
-
-          var _$chain$words$without$value = _.chain(this.get('model.url')).words().without('feed', 'http', 'https', 'com', 'org').value();
+          var _$chain$words$without$value = _.chain(this.url).words().without('feed', 'http', 'https', 'com', 'org').value();
 
           var _$chain$words$without$value2 = _slicedToArray(_$chain$words$without$value, 3);
 
@@ -250,7 +207,7 @@ define('livarava-neuroner-mockups/routes/index', ['exports', 'ember'], function 
           var _$chain$words$without$value2$2 = _$chain$words$without$value2[2];
           thirdWord = _$chain$words$without$value2$2 === undefined ? 'fascinating' : _$chain$words$without$value2$2;
 
-          _.times(11, function (index) {
+          _.times(15, function (index) {
             rssFeed.push({
               imageIndex: _.random(0, 2),
               title: 'About ' + firstWord + ' and ' + secondWord + ' #' + index,
@@ -813,50 +770,6 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       var child0 = (function () {
-        var child0 = (function () {
-          return {
-            meta: {
-              "fragmentReason": false,
-              "revision": "Ember@2.3.0",
-              "loc": {
-                "source": null,
-                "start": {
-                  "line": 22,
-                  "column": 14
-                },
-                "end": {
-                  "line": 24,
-                  "column": 14
-                }
-              },
-              "moduleName": "livarava-neuroner-mockups/templates/components/neuron-rss-feed.hbs"
-            },
-            isEmpty: false,
-            arity: 0,
-            cachedFragment: null,
-            hasRendered: false,
-            buildFragment: function buildFragment(dom) {
-              var el0 = dom.createDocumentFragment();
-              var el1 = dom.createTextNode("                  ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createElement("p");
-              var el2 = dom.createComment("");
-              dom.appendChild(el1, el2);
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n");
-              dom.appendChild(el0, el1);
-              return el0;
-            },
-            buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-              var morphs = new Array(1);
-              morphs[0] = dom.createUnsafeMorphAt(dom.childAt(fragment, [1]), 0, 0);
-              return morphs;
-            },
-            statements: [["content", "rssFeedItem.text", ["loc", [null, [23, 21], [23, 43]]]]],
-            locals: [],
-            templates: []
-          };
-        })();
         return {
           meta: {
             "fragmentReason": false,
@@ -864,112 +777,12 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
             "loc": {
               "source": null,
               "start": {
-                "line": 13,
-                "column": 4
+                "line": 20,
+                "column": 10
               },
               "end": {
-                "line": 30,
-                "column": 4
-              }
-            },
-            "moduleName": "livarava-neuroner-mockups/templates/components/neuron-rss-feed.hbs"
-          },
-          isEmpty: false,
-          arity: 1,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("        ");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createElement("div");
-            dom.setAttribute(el1, "class", "media");
-            var el2 = dom.createTextNode("\n            ");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("div");
-            dom.setAttribute(el2, "class", "media-left");
-            var el3 = dom.createTextNode("\n                ");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createElement("div");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createTextNode("\n            ");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n\n            ");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("div");
-            dom.setAttribute(el2, "class", "media-body");
-            var el3 = dom.createTextNode("\n                ");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createElement("h5");
-            dom.setAttribute(el3, "class", "media-heading ");
-            var el4 = dom.createComment("");
-            dom.appendChild(el3, el4);
-            dom.appendChild(el2, el3);
-            var el3 = dom.createTextNode("\n\n");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createComment("");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createTextNode("                ");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createElement("ul");
-            dom.setAttribute(el3, "class", "list-inline pull-left");
-            var el4 = dom.createTextNode("\n                    ");
-            dom.appendChild(el3, el4);
-            var el4 = dom.createElement("li");
-            var el5 = dom.createElement("span");
-            dom.setAttribute(el5, "class", "text-muted");
-            var el6 = dom.createTextNode("Published:");
-            dom.appendChild(el5, el6);
-            dom.appendChild(el4, el5);
-            var el5 = dom.createTextNode(" ");
-            dom.appendChild(el4, el5);
-            var el5 = dom.createComment("");
-            dom.appendChild(el4, el5);
-            dom.appendChild(el3, el4);
-            var el4 = dom.createTextNode("\n                ");
-            dom.appendChild(el3, el4);
-            dom.appendChild(el2, el3);
-            var el3 = dom.createTextNode("\n            ");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n        ");
-            dom.appendChild(el1, el2);
-            dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-            var element1 = dom.childAt(fragment, [1]);
-            var element2 = dom.childAt(element1, [1, 1]);
-            var element3 = dom.childAt(element1, [3]);
-            var morphs = new Array(4);
-            morphs[0] = dom.createAttrMorph(element2, 'class');
-            morphs[1] = dom.createMorphAt(dom.childAt(element3, [1]), 0, 0);
-            morphs[2] = dom.createMorphAt(element3, 3, 3);
-            morphs[3] = dom.createMorphAt(dom.childAt(element3, [5, 1]), 2, 2);
-            return morphs;
-          },
-          statements: [["attribute", "class", ["concat", ["media-object feed-image-", ["get", "rssFeedItem.imageIndex", ["loc", [null, [16, 54], [16, 76]]]]]]], ["content", "rssFeedItem.title", ["loc", [null, [20, 43], [20, 64]]]], ["block", "if", [["get", "isFeedTextShown", ["loc", [null, [22, 20], [22, 35]]]]], [], 0, null, ["loc", [null, [22, 14], [24, 21]]]], ["inline", "moment-to-now", [["get", "rssFeedItem.date", ["loc", [null, [26, 83], [26, 99]]]]], [], ["loc", [null, [26, 67], [26, 101]]]]],
-          locals: ["rssFeedItem"],
-          templates: [child0]
-        };
-      })();
-      var child1 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 31,
-                "column": 4
-              },
-              "end": {
-                "line": 35,
-                "column": 4
+                "line": 22,
+                "column": 10
               }
             },
             "moduleName": "livarava-neuroner-mockups/templates/components/neuron-rss-feed.hbs"
@@ -980,18 +793,10 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("        ");
+            var el1 = dom.createTextNode("              ");
             dom.appendChild(el0, el1);
-            var el1 = dom.createElement("div");
-            dom.setAttribute(el1, "class", "m-t-2");
-            var el2 = dom.createTextNode("\n            ");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("button");
-            dom.setAttribute(el2, "class", "btn btn-primary center-block");
-            var el3 = dom.createTextNode("More");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n        ");
+            var el1 = dom.createElement("p");
+            var el2 = dom.createComment("");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n");
@@ -999,31 +804,127 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
             return el0;
           },
           buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-            var element0 = dom.childAt(fragment, [1, 1]);
             var morphs = new Array(1);
-            morphs[0] = dom.createElementMorph(element0);
+            morphs[0] = dom.createUnsafeMorphAt(dom.childAt(fragment, [1]), 0, 0);
             return morphs;
           },
-          statements: [["element", "action", ["showMore"], [], ["loc", [null, [33, 57], [33, 78]]]]],
+          statements: [["content", "rssFeedItem.text", ["loc", [null, [21, 17], [21, 39]]]]],
           locals: [],
           templates: []
         };
       })();
       return {
         meta: {
-          "fragmentReason": {
-            "name": "missing-wrapper",
-            "problems": ["multiple-nodes", "wrong-type"]
-          },
+          "fragmentReason": false,
           "revision": "Ember@2.3.0",
           "loc": {
             "source": null,
             "start": {
-              "line": 1,
+              "line": 11,
               "column": 0
             },
             "end": {
-              "line": 37,
+              "line": 28,
+              "column": 0
+            }
+          },
+          "moduleName": "livarava-neuroner-mockups/templates/components/neuron-rss-feed.hbs"
+        },
+        isEmpty: false,
+        arity: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "media");
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2, "class", "media-left");
+          var el3 = dom.createTextNode("\n            ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("div");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2, "class", "media-body");
+          var el3 = dom.createTextNode("\n            ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("h5");
+          dom.setAttribute(el3, "class", "media-heading ");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n\n");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("            ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("ul");
+          dom.setAttribute(el3, "class", "list-inline pull-left");
+          var el4 = dom.createTextNode("\n                ");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createElement("li");
+          var el5 = dom.createElement("span");
+          dom.setAttribute(el5, "class", "text-muted");
+          var el6 = dom.createTextNode("Published:");
+          dom.appendChild(el5, el6);
+          dom.appendChild(el4, el5);
+          var el5 = dom.createTextNode(" ");
+          dom.appendChild(el4, el5);
+          var el5 = dom.createComment("");
+          dom.appendChild(el4, el5);
+          dom.appendChild(el3, el4);
+          var el4 = dom.createTextNode("\n            ");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element1 = dom.childAt(fragment, [1]);
+          var element2 = dom.childAt(element1, [1, 1]);
+          var element3 = dom.childAt(element1, [3]);
+          var morphs = new Array(4);
+          morphs[0] = dom.createAttrMorph(element2, 'class');
+          morphs[1] = dom.createMorphAt(dom.childAt(element3, [1]), 0, 0);
+          morphs[2] = dom.createMorphAt(element3, 3, 3);
+          morphs[3] = dom.createMorphAt(dom.childAt(element3, [5, 1]), 2, 2);
+          return morphs;
+        },
+        statements: [["attribute", "class", ["concat", ["media-object feed-image-", ["get", "rssFeedItem.imageIndex", ["loc", [null, [14, 50], [14, 72]]]]]]], ["content", "rssFeedItem.title", ["loc", [null, [18, 39], [18, 60]]]], ["block", "if", [["get", "isFeedTextShown", ["loc", [null, [20, 16], [20, 31]]]]], [], 0, null, ["loc", [null, [20, 10], [22, 17]]]], ["inline", "moment-to-now", [["get", "rssFeedItem.date", ["loc", [null, [24, 79], [24, 95]]]]], [], ["loc", [null, [24, 63], [24, 97]]]]],
+        locals: ["rssFeedItem"],
+        templates: [child0]
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 29,
+              "column": 0
+            },
+            "end": {
+              "line": 33,
               "column": 0
             }
           },
@@ -1035,63 +936,40 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
         hasRendered: false,
         buildFragment: function buildFragment(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("\n    ");
+          var el1 = dom.createTextNode("    ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("div");
-          dom.setAttribute(el1, "class", "clearfix");
+          dom.setAttribute(el1, "class", "m-t-2");
           var el2 = dom.createTextNode("\n        ");
           dom.appendChild(el1, el2);
-          var el2 = dom.createElement("h4");
-          dom.setAttribute(el2, "class", "pull-sm-left");
-          var el3 = dom.createTextNode("RSS Feed");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n\n        ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("label");
-          dom.setAttribute(el2, "class", "c-input c-checkbox pull-sm-right");
-          var el3 = dom.createTextNode("\n          ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createComment("");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("\n            ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("span");
-          dom.setAttribute(el3, "class", "c-indicator");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("\n            Show text\n        ");
+          var el2 = dom.createElement("button");
+          dom.setAttribute(el2, "class", "btn btn-primary center-block");
+          var el3 = dom.createTextNode("More");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n    ");
           dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n\n");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(3);
-          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [1, 3]), 1, 1);
-          morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
-          morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+          var element0 = dom.childAt(fragment, [1, 1]);
+          var morphs = new Array(1);
+          morphs[0] = dom.createElementMorph(element0);
           return morphs;
         },
-        statements: [["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "isFeedTextShown", ["loc", [null, [7, 42], [7, 57]]]]], [], []]], ["loc", [null, [7, 10], [7, 59]]]], ["block", "each", [["get", "rssFeedVisible", ["loc", [null, [13, 12], [13, 26]]]]], [], 0, null, ["loc", [null, [13, 4], [30, 13]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [31, 10], [31, 17]]]]], [], 1, null, ["loc", [null, [31, 4], [35, 11]]]]],
+        statements: [["element", "action", ["showMore"], [], ["loc", [null, [31, 53], [31, 74]]]]],
         locals: [],
-        templates: [child0, child1]
+        templates: []
       };
     })();
     return {
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type", "multiple-nodes"]
+          "problems": ["multiple-nodes", "wrong-type"]
         },
         "revision": "Ember@2.3.0",
         "loc": {
@@ -1101,7 +979,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
             "column": 0
           },
           "end": {
-            "line": 43,
+            "line": 40,
             "column": 0
           }
         },
@@ -1113,9 +991,41 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "clearfix");
+        var el2 = dom.createTextNode("\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h4");
+        dom.setAttribute(el2, "class", "pull-sm-left");
+        var el3 = dom.createTextNode("RSS Feed");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("label");
+        dom.setAttribute(el2, "class", "c-input c-checkbox pull-sm-right");
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n        ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("span");
+        dom.setAttribute(el3, "class", "c-indicator");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n        Show text\n    ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n\n");
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n\n\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
@@ -1124,15 +1034,16 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss-feed", ["expor
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(2);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        var morphs = new Array(4);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 3]), 1, 1);
         morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        dom.insertBoundary(fragment, 0);
+        morphs[2] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+        morphs[3] = dom.createMorphAt(fragment, 5, 5, contextualElement);
         return morphs;
       },
-      statements: [["block", "if", [["get", "isRSS", ["loc", [null, [1, 6], [1, 11]]]]], [], 0, null, ["loc", [null, [1, 0], [37, 7]]]], ["content", "yield", ["loc", [null, [42, 0], [42, 9]]]]],
+      statements: [["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "isFeedTextShown", ["loc", [null, [5, 38], [5, 53]]]]], [], []]], ["loc", [null, [5, 6], [5, 55]]]], ["block", "each", [["get", "rssFeedVisible", ["loc", [null, [11, 8], [11, 22]]]]], [], 0, null, ["loc", [null, [11, 0], [28, 9]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [29, 6], [29, 13]]]]], [], 1, null, ["loc", [null, [29, 0], [33, 7]]]], ["content", "yield", ["loc", [null, [39, 0], [39, 9]]]]],
       locals: [],
-      templates: [child0]
+      templates: [child0, child1]
     };
   })());
 });
