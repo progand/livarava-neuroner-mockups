@@ -1,18 +1,23 @@
 <h4>Axons - connected neurons</h4>
 
-{{#each model.connections as |neuron|}}
+{{#each visibleItems as |neuron|}}
     <div class="media">
         <div class="media-left">
             <img class="media-object" src="{{neuron.image}}" alt="{{neuron.header}}" width="60">
         </div>
 
         <div class="media-body">
-            <h4 class="media-heading">{{neuron.header}}</h4>
+            <h5 class="media-heading">{{neuron.header}}</h5>
             <ul class="list-inline pull-left">
                 <li><span class="text-muted">Added:</span> {{moment-to-now neuron.created}}</li>
             </ul>
         </div>
     </div>
 {{/each}}
+{{#if hasMore}}
+    <div class="m-t-2">
+        <button class="btn btn-primary center-block" {{action "showMore"}}>More</button>
+    </div>
+{{/if}}
 
 {{yield}}

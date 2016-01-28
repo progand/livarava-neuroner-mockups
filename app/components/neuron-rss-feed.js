@@ -3,14 +3,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   actions: {
     showMore(){
-      this.set('feedsToShow', this.get('feedsToShow') + 5);
+      this.set('itemsToShow', this.get('itemsToShow') + 5);
     }
   },
-  feedsToShow: 5,
-  rssFeedVisible: Ember.computed('model.feed', 'feedsToShow', function () {
-    return this.get('model.feed').slice(0, this.get('feedsToShow'));
+  itemsToShow: 5,
+  visibleItems: Ember.computed('model.feed', 'itemsToShow', function () {
+    return this.get('model.feed').slice(0, this.get('itemsToShow'));
   }),
-  hasMore: Ember.computed('model.feed', 'feedsToShow', function () {
-    return this.get('model.feed').length > this.get('feedsToShow');
+  hasMore: Ember.computed('model.feed', 'itemsToShow', function () {
+    return this.get('model.feed').length > this.get('itemsToShow');
   })
 });
