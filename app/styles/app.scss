@@ -1,0 +1,17 @@
+@mixin contain-image {
+  background-position: center;
+  background-size: contain;
+}
+
+@mixin feed-item-image{
+  width: 60px;
+  height: 60px;
+}
+
+@for $i from 0 through 2 {
+  .feed-image-#{$i} {
+    @include contain-image;
+    @include feed-item-image;
+    background-image: url("/img/feed/#{$i}.png");
+  }
+}
