@@ -49,7 +49,7 @@ define('livarava-neuroner-mockups/tests/components/neuron-rss-feed.jshint', ['ex
   QUnit.module('JSHint - components');
   QUnit.test('components/neuron-rss-feed.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/neuron-rss-feed.js should pass jshint.\ncomponents/neuron-rss-feed.js: line 19, col 9, \'_\' is not defined.\ncomponents/neuron-rss-feed.js: line 22, col 77, \'_\' is not defined.\ncomponents/neuron-rss-feed.js: line 24, col 5, \'_\' is not defined.\ncomponents/neuron-rss-feed.js: line 26, col 21, \'_\' is not defined.\ncomponents/neuron-rss-feed.js: line 28, col 24, \'_\' is not defined.\n\n5 errors');
+    assert.ok(true, 'components/neuron-rss-feed.js should pass jshint.');
   });
 });
 define('livarava-neuroner-mockups/tests/components/neuron-specific-info.jshint', ['exports'], function (exports) {
@@ -1071,7 +1071,7 @@ define('livarava-neuroner-mockups/tests/routes/index.jshint', ['exports'], funct
   QUnit.module('JSHint - routes');
   QUnit.test('routes/index.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'routes/index.js should pass jshint.\nroutes/index.js: line 10, col 16, \'_\' is not defined.\nroutes/index.js: line 11, col 16, \'_\' is not defined.\nroutes/index.js: line 12, col 16, \'_\' is not defined.\nroutes/index.js: line 20, col 13, \'_\' is not defined.\nroutes/index.js: line 23, col 87, \'_\' is not defined.\nroutes/index.js: line 25, col 9, \'_\' is not defined.\nroutes/index.js: line 27, col 25, \'_\' is not defined.\nroutes/index.js: line 29, col 28, \'_\' is not defined.\n\n8 errors');
+    assert.ok(false, 'routes/index.js should pass jshint.\nroutes/index.js: line 10, col 16, \'_\' is not defined.\nroutes/index.js: line 11, col 16, \'_\' is not defined.\nroutes/index.js: line 12, col 16, \'_\' is not defined.\nroutes/index.js: line 20, col 87, \'_\' is not defined.\nroutes/index.js: line 22, col 9, \'_\' is not defined.\nroutes/index.js: line 24, col 25, \'_\' is not defined.\nroutes/index.js: line 26, col 28, \'_\' is not defined.\n\n7 errors');
   });
 });
 define('livarava-neuroner-mockups/tests/test-helper', ['exports', 'livarava-neuroner-mockups/tests/helpers/resolver', 'ember-qunit'], function (exports, _livaravaNeuronerMockupsTestsHelpersResolver, _emberQunit) {
