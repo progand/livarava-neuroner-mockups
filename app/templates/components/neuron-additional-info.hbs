@@ -1,7 +1,10 @@
 <div class="clearfix">
     <div class="btn-group pull-sm-right">
-        <button class="btn btn-info {{unless showingConnections 'btn-info-outline'}}" disabled={{unless showingConnections true}} {{action "showInfo"}}>Info</button>
-        <button class="btn btn-info {{if showingConnections 'btn-info-outline'}}" disabled={{showingConnections}} {{action "showConnections"}}>
+        <button class="btn btn-info {{unless showingConnections 'btn-info-outline'}}"
+                disabled={{unless showingConnections true}} {{action "showInfo"}}>Info
+        </button>
+        <button class="btn btn-info {{if showingConnections 'btn-info-outline'}}"
+                disabled={{showingConnections}} {{action "showConnections"}}>
             Axons
         </button>
     </div>
@@ -13,6 +16,16 @@
 {{else}}
   {{neuron-specific-info model=model}}
 {{/liquid-if}}
+
+
+{{#right-panel}}
+  {{#if showingConnections}}
+    <p>Connections' context menu.</p>
+  {{else}}
+    <p>Neuron's context menu.</p>
+  {{/if}}
+
+{{/right-panel}}
 
 
 {{yield}}

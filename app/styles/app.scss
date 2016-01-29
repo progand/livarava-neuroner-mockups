@@ -19,6 +19,7 @@
 .right-panel {
   left: auto;
   width: 300px;
+  max-width: 100%;
   bottom: 0;
   transition: transform 0.3s ease;
   transform: translateX(300px);

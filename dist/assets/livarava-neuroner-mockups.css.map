@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "livarava-neuroner-mockups.css",
+	"sources": [
+		"../../sass_compiler-input_base_path-ETzsZO7H.tmp/0/app/styles/app.scss"
+	],
+	"sourcesContent": [
+		"@mixin contain-image {\n  background-position: center;\n  background-size: contain;\n}\n\n@mixin feed-item-image {\n  width: 60px;\n  height: 60px;\n}\n\n@for $i from 0 through 2 {\n  .feed-image-#{$i} {\n    @include contain-image;\n    @include feed-item-image;\n    background-image: url(\"/img/feed/#{$i}.png\");\n  }\n}\n\n.right-panel {\n  left: auto;\n  width: 300px;\n  max-width: 100%;\n  bottom: 0;\n  transition: transform 0.3s ease;\n  transform: translateX(300px);\n}\n\n.right-panel--visible {\n  transform: translateX(0);\n}\n\n.right-panel--toggle-button {\n  top: 8px;\n  left: auto;\n}\n"
+	],
+	"mappings": "AAWE,aAAa,CAAb;EAVA,mBAAmB,EAAE,MAAO;EAC5B,eAAe,EAAE,OAAQ;EAIzB,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,IAAK;EAOX,gBAAgB,EAAE,sBAAG,GACtB;;AAJD,aAAa,CAAb;EAVA,mBAAmB,EAAE,MAAO;EAC5B,eAAe,EAAE,OAAQ;EAIzB,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,IAAK;EAOX,gBAAgB,EAAE,sBAAG,GACtB;;AAJD,aAAa,CAAb;EAVA,mBAAmB,EAAE,MAAO;EAC5B,eAAe,EAAE,OAAQ;EAIzB,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,IAAK;EAOX,gBAAgB,EAAE,sBAAG,GACtB;;AAGH,YAAY,CAAC;EACX,IAAI,EAAE,IAAK;EACX,KAAK,EAAE,KAAM;EACb,SAAS,EAAE,IAAK;EAChB,MAAM,EAAE,CAAE;EACV,UAAU,EAAE,mBAAoB;EAChC,SAAS,EAAE,iBAAU,GACtB;;AAED,qBAAqB,CAAC;EACpB,SAAS,EAAE,aAAU,GACtB;;AAED,2BAA2B,CAAC;EAC1B,GAAG,EAAE,GAAI;EACT,IAAI,EAAE,IAAK,GACZ",
+	"names": []
+}
