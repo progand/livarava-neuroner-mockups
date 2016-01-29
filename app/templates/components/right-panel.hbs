@@ -1,9 +1,9 @@
 {{#unless visible}}
-    <a type="button" class="btn btn-link pos-f-t right-panel--toggle-button" {{action "toggle"}}>
+    <a type="button" class="btn btn-link right-panel--toggle-button" {{action "toggle"}}>
         Show menu...
     </a>
 {{/unless}}
-<div class="modal-content right-panel pos-f-t m-a-0 {{if visible 'right-panel--visible'}}">
+<div class="modal-content right-panel m-a-0 {{if visible 'right-panel--visible'}}">
     <div class="modal-header">
         <button type="button" class="close" {{action "toggle"}}>
             <span aria-hidden="true">&times;</span>

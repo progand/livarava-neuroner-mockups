@@ -20,10 +20,12 @@
   background-image: url("/img/feed/2.png"); }
 
 .right-panel {
-  left: auto;
+  top: 54px;
+  right: 0;
+  position: fixed;
+  bottom: 0;
   width: 300px;
   max-width: 100%;
-  bottom: 0;
   transition: transform 0.3s ease;
   transform: translateX(300px); }
 
@@ -31,7 +33,8 @@
   transform: translateX(0); }
 
 .right-panel--toggle-button {
-  top: 8px;
-  left: auto; }
+  top: 54px;
+  right: 0;
+  position: absolute; }
 
 /*# sourceMappingURL=livarava-neuroner-mockups.css.map */

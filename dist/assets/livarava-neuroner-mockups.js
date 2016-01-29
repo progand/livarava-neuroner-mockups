@@ -983,7 +983,7 @@ define("livarava-neuroner-mockups/templates/application", ["exports"], function 
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("nav");
-        dom.setAttribute(el1, "class", "navbar navbar-light bg-faded");
+        dom.setAttribute(el1, "class", "navbar navbar-light bg-faded m-b-3");
         var el2 = dom.createTextNode("\n    ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
@@ -3792,7 +3792,7 @@ define("livarava-neuroner-mockups/templates/components/right-panel", ["exports"]
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("a");
           dom.setAttribute(el1, "type", "button");
-          dom.setAttribute(el1, "class", "btn btn-link pos-f-t right-panel--toggle-button");
+          dom.setAttribute(el1, "class", "btn btn-link right-panel--toggle-button");
           var el2 = dom.createTextNode("\n        Show menu...\n    ");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -3806,7 +3806,7 @@ define("livarava-neuroner-mockups/templates/components/right-panel", ["exports"]
           morphs[0] = dom.createElementMorph(element0);
           return morphs;
         },
-        statements: [["element", "action", ["toggle"], [], ["loc", [null, [2, 77], [2, 96]]]]],
+        statements: [["element", "action", ["toggle"], [], ["loc", [null, [2, 69], [2, 88]]]]],
         locals: [],
         templates: []
       };
@@ -3907,7 +3907,7 @@ define("livarava-neuroner-mockups/templates/components/right-panel", ["exports"]
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "unless", [["get", "visible", ["loc", [null, [1, 10], [1, 17]]]]], [], 0, null, ["loc", [null, [1, 0], [5, 11]]]], ["attribute", "class", ["concat", ["modal-content right-panel pos-f-t m-a-0 ", ["subexpr", "if", [["get", "visible", ["loc", [null, [6, 57], [6, 64]]]], "right-panel--visible"], [], ["loc", [null, [6, 52], [6, 89]]]]]]], ["element", "action", ["toggle"], [], ["loc", [null, [8, 44], [8, 63]]]], ["content", "yield", ["loc", [null, [14, 6], [14, 15]]]]],
+      statements: [["block", "unless", [["get", "visible", ["loc", [null, [1, 10], [1, 17]]]]], [], 0, null, ["loc", [null, [1, 0], [5, 11]]]], ["attribute", "class", ["concat", ["modal-content right-panel m-a-0 ", ["subexpr", "if", [["get", "visible", ["loc", [null, [6, 49], [6, 56]]]], "right-panel--visible"], [], ["loc", [null, [6, 44], [6, 81]]]]]]], ["element", "action", ["toggle"], [], ["loc", [null, [8, 44], [8, 63]]]], ["content", "yield", ["loc", [null, [14, 6], [14, 15]]]]],
       locals: [],
       templates: [child0]
     };

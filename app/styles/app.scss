@@ -12,15 +12,23 @@
   .feed-image-#{$i} {
     @include contain-image;
     @include feed-item-image;
+
     background-image: url("/img/feed/#{$i}.png");
   }
 }
 
+@mixin right-panel-position {
+  top: 54px;
+  right: 0;
+}
+
 .right-panel {
-  left: auto;
+  @include right-panel-position;
+
+  position: fixed;
+  bottom: 0;
   width: 300px;
   max-width: 100%;
-  bottom: 0;
   transition: transform 0.3s ease;
   transform: translateX(300px);
 }
@@ -30,6 +38,7 @@
 }
 
 .right-panel--toggle-button {
-  top: 8px;
-  left: auto;
+  @include right-panel-position;
+
+  position: absolute;
 }
