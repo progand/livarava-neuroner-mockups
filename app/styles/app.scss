@@ -3,7 +3,7 @@
   background-size: contain;
 }
 
-@mixin feed-item-image{
+@mixin feed-item-image {
   width: 60px;
   height: 60px;
 }
@@ -14,4 +14,21 @@
     @include feed-item-image;
     background-image: url("/img/feed/#{$i}.png");
   }
+}
+
+.right-panel {
+  left: auto;
+  width: 300px;
+  bottom: 0;
+  transition: transform 0.3s ease;
+  transform: translateX(300px);
+}
+
+.right-panel--visible {
+  transform: translateX(0);
+}
+
+.right-panel--toggle-button {
+  top: 8px;
+  left: auto;
 }
