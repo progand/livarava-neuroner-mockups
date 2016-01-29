@@ -14,7 +14,7 @@
 {{#liquid-if showingConnections class="neuron-additional-info-animation"}}
   {{neuron-connections model=model}}
 {{else}}
-  {{neuron-specific-info model=model options=specificInfoOptions isFeedTextShown=isFeedTextShown}}
+  {{neuron-specific-info model=model options=specificInfoOptions}}
 {{/liquid-if}}
 
 
@@ -24,7 +24,7 @@
   {{else}}
 
       <label class="c-input c-checkbox">
-        {{input type="checkbox" checked=specificInfoOptions.isFeedTextShown}}
+        {{input type="checkbox" checked=specificInfoOptions.showingText}}
           <span class="c-indicator"></span>
           Show text
       </label>
