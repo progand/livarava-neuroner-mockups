@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  options: {
+  },
   actions: {
     showMore(){
       this.set('itemsToShow', this.get('itemsToShow') + 5);
