@@ -1,9 +1,9 @@
 <div class="clearfix">
     <div class="btn-group pull-sm-right">
-        <button class="btn btn-info {{unless showingConnections 'btn-info-outline'}}"
+        <button class="btn  {{if showingConnections 'btn-info-outline' 'btn-info' }}"
                 disabled={{unless showingConnections true}} {{action "showInfo"}}>Info
         </button>
-        <button class="btn btn-info {{if showingConnections 'btn-info-outline'}}"
+        <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
                 disabled={{showingConnections}} {{action "showConnections"}}>
             Axons
         </button>
