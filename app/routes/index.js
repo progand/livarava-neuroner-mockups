@@ -6,6 +6,7 @@ export default Ember.Route.extend({
       name: 'Example RSS Neuron',
       description: 'This is description of the neuron. You can edit it as well as URL above.',
       url: 'http://blog.aweber.com/feed',
+      type: 'rss',
       stats: {
         users: _.random(10, 90),
         axons: _.random(10, 150),
