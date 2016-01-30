@@ -1,4 +1,4 @@
-<h1>{{model.title}}</h1>
+{{content-editable value=model.title tagName="h1" placeholder="Input title here..." type="text" allowNewlines=false }}
 
 <ul class="list-inline">
     <li class="list-inline-item">Users: <span class="label label-info">{{model.stats.users}}</span></li>
@@ -6,15 +6,17 @@
     <li class="list-inline-item">Views: <span class="label label-success">{{model.stats.views}}</span></li>
 </ul>
 
-<form class="form-inline">
-    <div class="form-group">
-        <label for="exampleInputName2">URL:</label>
+{{#if isRSS}}
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName2">URL:</label>
 
-        <p class="form-control-static text-success">
-          {{content-editable value=model.url  placeholder="Input RSS URL" type="text" allowNewlines=false}}
-        </p>
-    </div>
-</form>
+            <a class="form-control-static" href="{{model.url}}" target="_blank">
+              {{model.url}}
+            </a>
+        </div>
+    </form>
+{{/if}}
 
 <div class="m-t-1 m-b-2 text-muted">
   {{content-editable value=model.description  placeholder="Edit description..." type="text"}}

@@ -13,6 +13,9 @@ export default Ember.Component.extend({
     this._super.apply(this, arguments);
     this.eventsBus.on('neuron:rss:options', this, 'onOptionsChange');
   },
+  didDestroyElement(){
+    this.eventsBus.off('neuron:rss:options', this, 'onOptionsChange');
+  },
   onOptionsChange(options){
     this.set('options', options);
   },
