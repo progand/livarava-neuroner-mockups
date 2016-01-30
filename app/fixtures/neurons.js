@@ -6,7 +6,9 @@ var neurons = [
     title: 'Example RSS Neuron',
     description: 'This is description of the neuron. You can edit it as well as URL above.',
     url: 'http://blog.aweber.com/feed',
+    image: "https://www.livarava.com/static/livarava/img/neurons/link.png",
     type: 'rss',
+    type_title: 'RSS',
     feed: Ember.computed('url', function () {
       var rssFeed = [],
         firstWord,
