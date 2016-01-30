@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   options: {
+    showingText: false
   },
   actions: {
     showMore(){
