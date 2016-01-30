@@ -1,1 +1,8 @@
-{{neuron-article model=model}}
+<h1>Welcome to LivaRava Mockups</h1>
+<p>Choose one of <span class="font-weight-bold text-success">example neurons</span>:</p>
+
+<ul class="list-unstyled">
+    {{#each model as |item|}}
+      <li>{{#link-to "search" item}}{{item.title}}{{/link-to}}</li>
+    {{/each}}
+</ul>
