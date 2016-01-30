@@ -3,6 +3,6 @@
 
 <ul class="list-unstyled">
     {{#each model as |item|}}
-      <li>{{#link-to "search" item}}{{item.title}}{{/link-to}}</li>
+      <li>{{#link-to "search" item.id}}{{item.title}} <span class="label label-info">{{item.type}}</span>{{/link-to}}</li>
     {{/each}}
 </ul>

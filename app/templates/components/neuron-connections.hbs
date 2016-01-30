@@ -3,11 +3,13 @@
 {{#each visibleItems as |neuron|}}
     <div class="media">
         <div class="media-left">
-            <img class="media-object" src="{{neuron.image}}" alt="{{neuron.header}}" width="60">
+          {{#link-to "search" neuron.id}}
+              <img class="media-object" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
+          {{/link-to}}
         </div>
 
         <div class="media-body">
-            <h5 class="media-heading">{{neuron.header}}</h5>
+            <h5 class="media-heading">{{#link-to "search" neuron.id}}{{neuron.title}}{{/link-to}}</h5>
             <ul class="list-inline pull-left">
                 <li><span class="text-muted">Added:</span> {{moment-to-now neuron.created}}</li>
             </ul>
