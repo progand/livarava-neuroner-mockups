@@ -14,7 +14,7 @@
 {{#liquid-if showingConnections class="neuron-additional-info-animation"}}
   {{neuron-connections model=model}}
 {{else}}
-  {{neuron-specific-info model=model options=specificInfoOptions}}
+  {{neuron-specific-info model=model}}
 {{/liquid-if}}
 
 
@@ -22,12 +22,13 @@
   {{#if showingConnections}}
       <p>Connections' context menu.</p>
   {{else}}
-
-      <label class="c-input c-checkbox">
-        {{input type="checkbox" checked=specificInfoOptions.showingText}}
-          <span class="c-indicator"></span>
-          Show text
-      </label>
+      <form>
+          <label class="c-input c-checkbox">
+            {{input type="checkbox" checked=specificInfoOptions.showingText}}
+              <span class="c-indicator"></span>
+              Show text
+          </label>
+      </form>
   {{/if}}
 
 {{/right-panel}}

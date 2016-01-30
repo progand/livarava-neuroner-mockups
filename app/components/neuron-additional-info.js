@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   showingConnections: false,
   specificInfoOptions: {
-    isFeedTextShown: false
+    showingText: false
   },
   actions: {
     showInfo(){
@@ -12,5 +12,8 @@ export default Ember.Component.extend({
     showConnections(){
       this.set('showingConnections', true);
     }
-  }
+  },
+  watchFoo: Ember.observer('specificInfoOptions.showingText', function () {
+    this.eventsBus.trigger('neuron:rss:options', this.get('specificInfoOptions'));
+  })
 });
