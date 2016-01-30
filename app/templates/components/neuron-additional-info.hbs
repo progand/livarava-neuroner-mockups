@@ -22,13 +22,7 @@
   {{#if showingConnections}}
       <p>Connections' context menu.</p>
   {{else}}
-      <form>
-          <label class="c-input c-checkbox">
-            {{input type="checkbox" checked=specificInfoOptions.showingText}}
-              <span class="c-indicator"></span>
-              Show text
-          </label>
-      </form>
+    {{neuron-specific-menu}}
   {{/if}}
 
 {{/right-panel}}
