@@ -2,13 +2,13 @@
     <div class="btn-group pull-sm-right">
       {{#if hasSpecificInfo}}
           <button class="btn  {{if showingConnections 'btn-info-outline' 'btn-info' }}"
-                  disabled={{unless showingConnections true}} {{action "showInfo"}}>Info
+                  disabled={{unless showingConnections true}} {{action "showInfo"}}>Overview
+          </button>
+          <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
+                  disabled={{showingConnections}} {{action "showConnections"}}>
+              Connections
           </button>
       {{/if}}
-        <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
-                disabled={{showingConnections}} {{action "showConnections"}}>
-            Axons
-        </button>
     </div>
 </div>
 
@@ -16,7 +16,9 @@
 {{#liquid-if showingConnections class="neuron-additional-info-animation"}}
   {{neuron-connections model=model}}
 {{else if hasSpecificInfo}}
-  {{neuron-specific-info model=model}}
+  {{#if isRSS}}
+    {{neuron-rss model=model}}
+  {{/if}}
 {{/liquid-if}}
 
 
