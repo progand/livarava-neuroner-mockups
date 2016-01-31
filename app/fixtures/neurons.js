@@ -51,6 +51,7 @@ let neurons = [
     "id": 30121,
     "title": "Las Vegas",
     "image": "http://i.imgur.com/nVnzXva.jpg",
+    "url": "http://i.imgur.com/nVnzXva.jpg",
     "type": "image",
     "type_title": "image",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
@@ -65,6 +66,7 @@ let neurons = [
     "id": 27822,
     "title": "Startup fundraising",
     "image": "https://www.livarava.com/static/livarava/img/neurons/link.png",
+    "url": "http://www.inc.com/dana-severson/startup-fundraising-lessons-for-the-99.html",
     "type": "link",
     "type_title": "link",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
@@ -106,6 +108,7 @@ let neurons = [
   }, {
     "id": 13239,
     "title": "Welcome to Las Vegas!",
+    "url": "http://img0.svcdn.lasvegas.com/v2/cache/lasvegas/25C7DBB7FDEE98EB339313F2B55B68D5.jpg",
     "image": "http://img0.svcdn.lasvegas.com/v2/cache/lasvegas/25C7DBB7FDEE98EB339313F2B55B68D5.jpg",
     "type": "image",
     "type_title": "image",
@@ -113,6 +116,7 @@ let neurons = [
   }, {
     "id": 13235,
     "title": "Vegas at night",
+    "url": "http://flippins.com/wp-content/uploads/2014/02/las-vegas-night.jpg",
     "image": "http://flippins.com/wp-content/uploads/2014/02/las-vegas-night.jpg",
     "type": "image",
     "type_title": "image",
