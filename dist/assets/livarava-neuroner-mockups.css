@@ -1,23 +1,6 @@
-.feed-image-0 {
-  background-position: center;
-  background-size: contain;
+.feed-item-image {
   width: 60px;
-  height: 60px;
-  background-image: url("/img/feed/0.png"); }
-
-.feed-image-1 {
-  background-position: center;
-  background-size: contain;
-  width: 60px;
-  height: 60px;
-  background-image: url("/img/feed/1.png"); }
-
-.feed-image-2 {
-  background-position: center;
-  background-size: contain;
-  width: 60px;
-  height: 60px;
-  background-image: url("/img/feed/2.png"); }
+  height: 60px; }
 
 .right-panel {
   top: 54px;

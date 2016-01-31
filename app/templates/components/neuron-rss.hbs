@@ -3,7 +3,7 @@
 {{#each visibleItems as |rssFeedItem|}}
     <div class="media">
         <div class="media-left">
-            <div class="media-object feed-image-{{rssFeedItem.imageIndex}}"></div>
+            <img class="media-object feed-item-image" src="{{rssFeedItem.image}}" alt="{{rssFeedItem.title}}"/>
         </div>
 
         <div class="media-body">

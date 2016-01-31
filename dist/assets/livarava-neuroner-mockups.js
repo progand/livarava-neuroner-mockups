@@ -721,9 +721,7 @@ define('livarava-neuroner-mockups/controllers/array', ['exports', 'ember'], func
 define('livarava-neuroner-mockups/controllers/object', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
 });
-define('livarava-neuroner-mockups/fixtures/neurons', ['exports', 'ember'], function (exports, _ember) {
-  var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
-
+define('livarava-neuroner-mockups/fixtures/neurons', ['exports'], function (exports) {
   var neurons = [{
     id: 3245,
     title: 'Example RSS Neuron',
@@ -732,35 +730,37 @@ define('livarava-neuroner-mockups/fixtures/neurons', ['exports', 'ember'], funct
     image: "https://www.livarava.com/static/livarava/img/neurons/link.png",
     type: 'rss',
     type_title: 'RSS',
-    feed: _ember['default'].computed('url', function () {
-      var rssFeed = [],
-          firstWord,
-          secondWord,
-          thirdWord;
+    feed: [{
+      "url": "http://news.meta.ua/go.php?to=2015-11-45908111",
+      "title": "Нарешті матиму свій сайт",
+      "date": "2016-01-31T18:44:00.000Z",
+      "text": "...  кілька варіантів дизайну сайту, а також для моїх журналістських та письменницьких потреб запропонували кілька ґатунків юзабіліті, себто ...\n\t\t\t\t\t\t\t    \t"
 
-      var _$chain$words$without$value = _.chain(this.url).words().without('feed', 'http', 'https', 'com', 'org').value();
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-04-42531490",
+      "title": "Найбільш високооплачувані вакансії в Україні та за кордоном",
+      "date": "2016-01-31T17:05:00.000Z",
+      "text": "Для успішного кандидата потрібні: знання принципів юзабіліті і побудова web-систем та навички аналізу ринку і конкурентного середовища, розробки ...\n\t\t\t\t\t\t\t    \t"
 
-      var _$chain$words$without$value2 = _slicedToArray(_$chain$words$without$value, 3);
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-09-44853592",
+      "title": "18-20 вересня столичний Арт-завод «Платформа» прийме стартап",
+      "date": "2016-01-31T15:05:00.000Z",
+      "text": "третій день конференції охопить веб- та мобільну розробку, проектування інтерфейсів, питання юзабіліті тощо. Крім того, усі три дні буде відкрито ...\n\t\t\t\t\t\t\t    \t"
 
-      var _$chain$words$without$value2$0 = _$chain$words$without$value2[0];
-      firstWord = _$chain$words$without$value2$0 === undefined ? 'news' : _$chain$words$without$value2$0;
-      var _$chain$words$without$value2$1 = _$chain$words$without$value2[1];
-      secondWord = _$chain$words$without$value2$1 === undefined ? 'interesting' : _$chain$words$without$value2$1;
-      var _$chain$words$without$value2$2 = _$chain$words$without$value2[2];
-      thirdWord = _$chain$words$without$value2$2 === undefined ? 'fascinating' : _$chain$words$without$value2$2;
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-07-43747615",
+      "title": "KyivPost: два роки за пейволом",
+      "date": "2016-01-31T11:30:00.000Z",
+      "text": "З точки зору юзабіліті все має бути зроблено «у два кліки». Обов'язково подивіться на всі існуючі системи платежів - на Заході, в суміжних сферах ...\n\t\t\t\t\t\t\t    \t"
 
-      _.times(15, function (index) {
-        rssFeed.push({
-          imageIndex: _.random(0, 2),
-          title: 'About ' + firstWord + ' and ' + secondWord + ' #' + index,
-          date: new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now())),
-          text: 'Lorem ipsum dolor sit amet <span class="text-success">' + firstWord + '</span>, consectetur adipiscing elit, sed do eiusmod tempor <span class="text-success">' + secondWord + '</span> incididunt ut labore et dolore magna aliqua <span class="text-success">' + thirdWord + '</span>. Ut enim ad minim veniam, quis nostrud exercitation ullamco <span class="text-success">' + secondWord + '</span> laboris nisi ut aliquip ex ea commodo consequat...'
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-11-45872119",
+      "title": "Сьогодні, 14 листопада, — Всесвітній день юзабіліті",
+      "date": "2016-01-31T07:30:00.000Z",
+      "text": "Всесвітній день юзабіліті (World Usability Day) був заснований у 2005. У цьому ж році його вперше відсвяткували. І з тих пір його відзначають щороку ...\n\t\t\t\t\t\t\t    \t"
 
-        });
-      });
-
-      return rssFeed;
-    })
+    }]
   }, {
     "id": 32183,
     "title": "Are You Ready to Seek Funding? This 10-Point Checklist Will Decide.",
@@ -861,13 +861,37 @@ define('livarava-neuroner-mockups/fixtures/neurons', ['exports', 'ember'], funct
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }];
 
-  neurons.forEach(function (neuron) {
-    neuron.stats = {
+  neurons = neurons.map(function (neuron) {
+    var stats,
+        created,
+        feed,
+        datesFrom = Date.now() - 24 * 60 * 60 * 1000;
+
+    stats = {
       users: _.random(10, 90),
       axons: _.random(10, 150),
       views: _.random(100, 500)
     };
+
+    created = new Date(_.random(datesFrom, Date.now()));
+
+    if (neuron.type === 'rss' && !_.isEmpty(neuron.feed)) {
+      feed = _(neuron.feed).map(function (feedItem) {
+        return _.extend(feedItem, {
+          date: new Date(_.random(datesFrom, Date.now())),
+          image: "https://www.livarava.com/static/livarava/img/neurons/link.png"
+        });
+      }).orderBy('date', 'desc').value();
+    }
+
+    return _.extend(neuron, {
+      stats: stats,
+      created: created,
+      feed: feed
+    });
   });
+
+  neurons = _.orderBy(neurons, 'created', 'desc');
 
   exports['default'] = neurons;
 });
@@ -3191,7 +3215,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
             var el1 = dom.createTextNode("              ");
             dom.appendChild(el0, el1);
             var el1 = dom.createElement("img");
-            dom.setAttribute(el1, "class", "media-object");
+            dom.setAttribute(el1, "class", "media-object feed-item-image");
             dom.setAttribute(el1, "width", "60");
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n");
@@ -3205,7 +3229,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
             morphs[1] = dom.createAttrMorph(element1, 'alt');
             return morphs;
           },
-          statements: [["attribute", "src", ["concat", [["get", "neuron.image", ["loc", [null, [7, 47], [7, 59]]]]]]], ["attribute", "alt", ["concat", [["get", "neuron.title", ["loc", [null, [7, 70], [7, 82]]]]]]]],
+          statements: [["attribute", "src", ["concat", [["get", "neuron.image", ["loc", [null, [7, 63], [7, 75]]]]]]], ["attribute", "alt", ["concat", [["get", "neuron.title", ["loc", [null, [7, 86], [7, 98]]]]]]]],
           locals: [],
           templates: []
         };
@@ -3789,7 +3813,8 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss", ["exports"],
           dom.setAttribute(el2, "class", "media-left");
           var el3 = dom.createTextNode("\n            ");
           dom.appendChild(el2, el3);
-          var el3 = dom.createElement("div");
+          var el3 = dom.createElement("img");
+          dom.setAttribute(el3, "class", "media-object feed-item-image");
           dom.appendChild(el2, el3);
           var el3 = dom.createTextNode("\n        ");
           dom.appendChild(el2, el3);
@@ -3843,14 +3868,15 @@ define("livarava-neuroner-mockups/templates/components/neuron-rss", ["exports"],
           var element1 = dom.childAt(fragment, [1]);
           var element2 = dom.childAt(element1, [1, 1]);
           var element3 = dom.childAt(element1, [3]);
-          var morphs = new Array(4);
-          morphs[0] = dom.createAttrMorph(element2, 'class');
-          morphs[1] = dom.createMorphAt(dom.childAt(element3, [1]), 0, 0);
-          morphs[2] = dom.createMorphAt(element3, 3, 3);
-          morphs[3] = dom.createMorphAt(dom.childAt(element3, [5, 1]), 2, 2);
+          var morphs = new Array(5);
+          morphs[0] = dom.createAttrMorph(element2, 'src');
+          morphs[1] = dom.createAttrMorph(element2, 'alt');
+          morphs[2] = dom.createMorphAt(dom.childAt(element3, [1]), 0, 0);
+          morphs[3] = dom.createMorphAt(element3, 3, 3);
+          morphs[4] = dom.createMorphAt(dom.childAt(element3, [5, 1]), 2, 2);
           return morphs;
         },
-        statements: [["attribute", "class", ["concat", ["media-object feed-image-", ["get", "rssFeedItem.imageIndex", ["loc", [null, [6, 50], [6, 72]]]]]]], ["content", "rssFeedItem.title", ["loc", [null, [10, 39], [10, 60]]]], ["block", "if", [["get", "options.showingText", ["loc", [null, [12, 16], [12, 35]]]]], [], 0, null, ["loc", [null, [12, 10], [14, 17]]]], ["inline", "moment-to-now", [["get", "rssFeedItem.date", ["loc", [null, [16, 79], [16, 95]]]]], [], ["loc", [null, [16, 63], [16, 97]]]]],
+        statements: [["attribute", "src", ["concat", [["get", "rssFeedItem.image", ["loc", [null, [6, 61], [6, 78]]]]]]], ["attribute", "alt", ["concat", [["get", "rssFeedItem.title", ["loc", [null, [6, 89], [6, 106]]]]]]], ["content", "rssFeedItem.title", ["loc", [null, [10, 39], [10, 60]]]], ["block", "if", [["get", "options.showingText", ["loc", [null, [12, 16], [12, 35]]]]], [], 0, null, ["loc", [null, [12, 10], [14, 17]]]], ["inline", "moment-to-now", [["get", "rssFeedItem.date", ["loc", [null, [16, 79], [16, 95]]]]], [], ["loc", [null, [16, 63], [16, 97]]]]],
         locals: ["rssFeedItem"],
         templates: [child0]
       };

@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 let neurons = [
   {
     id: 3245,
@@ -9,26 +7,37 @@ let neurons = [
     image: "https://www.livarava.com/static/livarava/img/neurons/link.png",
     type: 'rss',
     type_title: 'RSS',
-    feed: Ember.computed('url', function () {
-      var rssFeed = [],
-        firstWord,
-        secondWord,
-        thirdWord;
+    feed: [{
+      "url": "http://news.meta.ua/go.php?to=2015-11-45908111",
+      "title": "Нарешті матиму свій сайт",
+      "date": "2016-01-31T18:44:00.000Z",
+      "text": "...  кілька варіантів дизайну сайту, а також для моїх журналістських та письменницьких потреб запропонували кілька ґатунків юзабіліті, себто ...\n\t\t\t\t\t\t\t    \t"
 
-      [firstWord = 'news', secondWord = 'interesting', thirdWord = 'fascinating'] = _.chain(this.url).words().without('feed', 'http', 'https', 'com', 'org').value();
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-04-42531490",
+      "title": "Найбільш високооплачувані вакансії в Україні та за кордоном",
+      "date": "2016-01-31T17:05:00.000Z",
+      "text": "Для успішного кандидата потрібні: знання принципів юзабіліті і побудова web-систем та навички аналізу ринку і конкурентного середовища, розробки ...\n\t\t\t\t\t\t\t    \t"
 
-      _.times(15, index => {
-        rssFeed.push({
-          imageIndex: _.random(0, 2),
-          title: `About ${firstWord} and ${secondWord} #${index}`,
-          date: new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now())),
-          text: `Lorem ipsum dolor sit amet <span class="text-success">${firstWord}</span>, consectetur adipiscing elit, sed do eiusmod tempor <span class="text-success">${secondWord}</span> incididunt ut labore et dolore magna aliqua <span class="text-success">${thirdWord}</span>. Ut enim ad minim veniam, quis nostrud exercitation ullamco <span class="text-success">${secondWord}</span> laboris nisi ut aliquip ex ea commodo consequat...`
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-09-44853592",
+      "title": "18-20 вересня столичний Арт-завод «Платформа» прийме стартап",
+      "date": "2016-01-31T15:05:00.000Z",
+      "text": "третій день конференції охопить веб- та мобільну розробку, проектування інтерфейсів, питання юзабіліті тощо. Крім того, усі три дні буде відкрито ...\n\t\t\t\t\t\t\t    \t"
 
-        });
-      });
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-07-43747615",
+      "title": "KyivPost: два роки за пейволом",
+      "date": "2016-01-31T11:30:00.000Z",
+      "text": "З точки зору юзабіліті все має бути зроблено «у два кліки». Обов'язково подивіться на всі існуючі системи платежів - на Заході, в суміжних сферах ...\n\t\t\t\t\t\t\t    \t"
 
-      return rssFeed;
-    })
+    }, {
+      "url": "http://news.meta.ua/go.php?to=2015-11-45872119",
+      "title": "Сьогодні, 14 листопада, — Всесвітній день юзабіліті",
+      "date": "2016-01-31T07:30:00.000Z",
+      "text": "Всесвітній день юзабіліті (World Usability Day) був заснований у 2005. У цьому ж році його вперше відсвяткували. І з тих пір його відзначають щороку ...\n\t\t\t\t\t\t\t    \t"
+
+    }]
   },
   {
     "id": 32183,
@@ -131,12 +140,38 @@ let neurons = [
   }
 ];
 
-neurons.forEach(neuron => {
-  neuron.stats = {
+neurons = neurons.map(neuron => {
+  var stats,
+    created,
+    feed,
+    datesFrom = Date.now() - 24 * 60 * 60 * 1000;
+
+  stats = {
     users: _.random(10, 90),
     axons: _.random(10, 150),
     views: _.random(100, 500)
   };
+
+  created = new Date(_.random(datesFrom, Date.now()));
+
+  if (neuron.type === 'rss' && !_.isEmpty(neuron.feed)) {
+    feed = _(neuron.feed).map(feedItem => {
+        return _.extend(feedItem, {
+          date: new Date(_.random(datesFrom, Date.now())),
+          image: "https://www.livarava.com/static/livarava/img/neurons/link.png"
+        });
+      })
+      .orderBy('date', 'desc')
+      .value();
+  }
+
+  return _.extend(neuron, {
+    stats: stats,
+    created: created,
+    feed: feed
+  });
 });
+
+neurons = _.orderBy(neurons, 'created', 'desc');
 
 export default neurons;
