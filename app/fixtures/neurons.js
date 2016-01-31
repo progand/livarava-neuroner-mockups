@@ -40,7 +40,7 @@ let neurons = [
   },
   {
     "title": "Are You Ready to Seek Funding? This 10-Point Checklist Will Decide.",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/link.png",
+    "image": "/img/neurons/link.png",
     "url": "http://www.entrepreneur.com/article/248777",
     "type": "link",
     "type_title": "link",
@@ -54,44 +54,44 @@ let neurons = [
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava Webinar: Finance and Stocks - Lesson 2",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/event.png",
+    "image": "/img/neurons/event.png",
     "type": "event",
     "type_title": "event",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Startup fundraising",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/link.png",
+    "image": "/img/neurons/link.png",
     "url": "http://www.inc.com/dana-severson/startup-fundraising-lessons-for-the-99.html",
     "type": "link",
     "type_title": "link",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Fundraising",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
+    "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava Test",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
+    "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava Webinar: Finance and Stocks - Part 1",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/event.png",
+    "image": "/img/neurons/event.png",
     "type": "event",
     "type_title": "event",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Downtown Las Vegas",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
+    "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Funding",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
+    "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
@@ -111,31 +111,31 @@ let neurons = [
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Las Vegas",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
+    "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava Tutorial",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
+    "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava",
-    "image": "https://www.livarava.com/static/livarava/img/projects/livarava-logo-black-400x400.png",
+    "image": "/img/logo/logo_400x400_vertikal.png",
     "type": "project",
     "type_title": "project",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "+38 (095) 55-55-55",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/phone.png",
+    "image": "/img/neurons/phone.png",
     "type": "phone",
     "type_title": "phone",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "info@livarava.com",
-    "image": "https://www.livarava.com/static/livarava/img/neurons/email.png",
+    "image": "/img/neurons/email.png",
     "type": "email",
     "type_title": "email",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
@@ -167,7 +167,7 @@ neurons = neurons.map((neuron, index) => {
     feed = _(neuron.feed).map(feedItem => {
         return _.extend(feedItem, {
           date: new Date(_.random(datesFrom, Date.now())),
-          image: "https://www.livarava.com/static/livarava/img/neurons/link.png"
+          image: "/img/neurons/link.png"
         });
       })
       .orderBy('date', 'desc')
