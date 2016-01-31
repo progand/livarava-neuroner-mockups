@@ -14,7 +14,9 @@
 
 <hr>
 {{#liquid-if showingConnections class="neuron-additional-info-animation"}}
-  {{neuron-connections model=model}}
+  {{#neuron-connections model=model}}
+      <h4>Axons - connected neurons</h4>
+  {{/neuron-connections}}
 {{else if hasSpecificInfo}}
   {{#if isRSS}}
     {{neuron-rss model=model}}
