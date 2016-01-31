@@ -28,8 +28,28 @@
     </form>
 {{/if}}
 
-<div class="m-t-1 m-b-2 text-muted">
-  {{content-editable value=model.description  placeholder="Edit description..." type="text"}}
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link {{if showingDescription 'active'}}" href="" {{action 'showDescription' true}}>Description</a>
+    </li>
+  {{#if hasExternalURL}}
+      <li class="nav-item">
+          <a class="nav-link  {{unless showingDescription 'active'}}"
+             href="" {{action 'showDescription' false}}>Source</a>
+      </li>
+  {{/if}}
+</ul>
+
+<div class="m-a-1 text-muted">
+  {{#if showingDescription}}
+    {{content-editable value=model.description  placeholder="Edit description..." type="text"}}
+  {{else}}
+    {{#if hasExternalURL}}
+        <a href="{{model.url}}" class="text-success" target="_blank">
+          {{model.url}}
+        </a>
+    {{/if}}
+  {{/if}}
 </div>
 
 {{yield}}

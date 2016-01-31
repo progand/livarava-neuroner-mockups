@@ -9,7 +9,7 @@ export default Ember.Mixin.create({
     return this.get('model.type') === 'image';
   }),
   hasExternalURL: Ember.computed('model.type', function () {
-    return ['image', 'rss', 'video', 'url']
+    return ['image', 'rss', 'video', 'link']
       .includes(this.get('model.type'));
   }),
   hasSpecificInfo: Ember.computed('model.type', function () {

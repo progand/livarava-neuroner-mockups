@@ -43,6 +43,7 @@ let neurons = [
     "id": 32183,
     "title": "Are You Ready to Seek Funding? This 10-Point Checklist Will Decide.",
     "image": "https://www.livarava.com/static/livarava/img/neurons/link.png",
+    "url": "http://www.entrepreneur.com/article/248777",
     "type": "link",
     "type_title": "link",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
