@@ -137,6 +137,20 @@ let neurons = [
     "type": "project",
     "type_title": "project",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
+  }, {
+    "id": 0,
+    "title": "+38 (095) 55-55-55",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/phone.png",
+    "type": "phone",
+    "type_title": "phone",
+    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
+  }, {
+    "id": 0,
+    "title": "info@livarava.com",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/email.png",
+    "type": "email",
+    "type_title": "email",
+    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }
 ];
 
