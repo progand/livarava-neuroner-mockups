@@ -6,6 +6,16 @@
     <li class="list-inline-item">Views: <span class="label label-success">{{model.stats.views}}</span></li>
 </ul>
 
+{{#if hasExternalURL}}
+    <div class="clearfix m-b-2">
+      {{#if isImage}}
+          <a href="model.image" target="_blank">
+              <img src="{{model.image}}" alt="{{model.title}}" class="img-fluid"/>
+          </a>
+      {{/if}}
+    </div>
+{{/if}}
+
 {{#if isRSS}}
     <form class="form-inline">
         <div class="form-group">

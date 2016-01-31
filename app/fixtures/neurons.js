@@ -104,14 +104,14 @@ let neurons = [
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "id": 13239,
-    "title": "This is Text Neuron - LivaRava",
+    "title": "Welcome to Las Vegas!",
     "image": "http://img0.svcdn.lasvegas.com/v2/cache/lasvegas/25C7DBB7FDEE98EB339313F2B55B68D5.jpg",
     "type": "image",
     "type_title": "image",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "id": 13235,
-    "title": "This is Text Neuron - LivaRava",
+    "title": "Vegas at night",
     "image": "http://flippins.com/wp-content/uploads/2014/02/las-vegas-night.jpg",
     "type": "image",
     "type_title": "image",
