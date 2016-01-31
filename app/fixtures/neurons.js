@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var neurons = [
+let neurons = [
   {
     id: 3245,
     title: 'Example RSS Neuron',
