@@ -3,6 +3,6 @@ import neurons from '../fixtures/neurons';
 
 export default Ember.Route.extend({
   model(){
-    return neurons;
+    return _.orderBy(neurons, 'title');
   }
 });
