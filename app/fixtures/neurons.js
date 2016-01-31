@@ -1,7 +1,7 @@
 let neurons = [
   {
     id: 3245,
-    title: 'Example RSS Neuron',
+    title: 'RSS Feed',
     description: 'This is description of the neuron. You can edit it as well as the title above.',
     url: 'http://blog.aweber.com/feed',
     image: "https://www.livarava.com/static/livarava/img/neurons/link.png",
