@@ -59,64 +59,7 @@ let neurons = [
     "type_title": "event",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
-    "title": "Startup fundraising",
-    "image": "/img/neurons/link.png",
-    "url": "http://www.inc.com/dana-severson/startup-fundraising-lessons-for-the-99.html",
-    "type": "link",
-    "type_title": "link",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
     "title": "Fundraising",
-    "image": "/img/neurons/text.png",
-    "type": "text",
-    "type_title": "text",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "LivaRava Test",
-    "image": "/img/neurons/text.png",
-    "type": "text",
-    "type_title": "text",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "LivaRava Webinar: Finance and Stocks - Part 1",
-    "image": "/img/neurons/event.png",
-    "type": "event",
-    "type_title": "event",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "Downtown Las Vegas",
-    "image": "/img/neurons/text.png",
-    "type": "text",
-    "type_title": "text",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "Funding",
-    "image": "/img/neurons/text.png",
-    "type": "text",
-    "type_title": "text",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "Welcome to Las Vegas!",
-    "url": "http://img0.svcdn.lasvegas.com/v2/cache/lasvegas/25C7DBB7FDEE98EB339313F2B55B68D5.jpg",
-    "image": "http://img0.svcdn.lasvegas.com/v2/cache/lasvegas/25C7DBB7FDEE98EB339313F2B55B68D5.jpg",
-    "type": "image",
-    "type_title": "image",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "Vegas at night",
-    "url": "http://flippins.com/wp-content/uploads/2014/02/las-vegas-night.jpg",
-    "image": "http://flippins.com/wp-content/uploads/2014/02/las-vegas-night.jpg",
-    "type": "image",
-    "type_title": "image",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "Las Vegas",
-    "image": "/img/neurons/text.png",
-    "type": "text",
-    "type_title": "text",
-    "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
-  }, {
-    "title": "LivaRava Tutorial",
     "image": "/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
