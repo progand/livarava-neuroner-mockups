@@ -12,20 +12,12 @@
           <a href="model.image" target="_blank">
               <img src="{{model.image}}" alt="{{model.title}}" class="img-fluid"/>
           </a>
+      {{else if isVideo}}
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="{{model.url}}"></iframe>
+          </div>
       {{/if}}
     </div>
-{{/if}}
-
-{{#if isRSS}}
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="exampleInputName2">URL:</label>
-
-            <a class="form-control-static" href="{{model.url}}" target="_blank">
-              {{model.url}}
-            </a>
-        </div>
-    </form>
 {{/if}}
 
 <ul class="nav nav-tabs">

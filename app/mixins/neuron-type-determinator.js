@@ -8,6 +8,9 @@ export default Ember.Mixin.create({
   isImage: Ember.computed('model.type', function () {
     return this.get('model.type') === 'image';
   }),
+  isVideo: Ember.computed('model.type', function () {
+    return this.get('model.type') === 'video';
+  }),
   hasExternalURL: Ember.computed('model.type', function () {
     return ['image', 'rss', 'video', 'link']
       .includes(this.get('model.type'));
