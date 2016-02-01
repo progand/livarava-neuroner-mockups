@@ -3,7 +3,10 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     url,
     image,
     regexps = {
-      image: /\.(jpeg|jpg|gif|png)$/,
+      image: {
+        link: /\.(jpeg|jpg|gif|png)$/,
+        dataURL: /^data:image\/(.+);base64,(.*)$/
+      },
       audio: /^data:audio\/(.+);base64,(.*)$/,
       url: /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/,
       phone: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i,
@@ -18,7 +21,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   if (type) {
     switch (type) {
       case 'rss':
-        if(!regexps.url.test(raw)){
+        if (!regexps.url.test(raw)) {
           return null;
         }
         image = '/img/neurons/link.png';
@@ -26,7 +29,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   } else if (videoId !== null && videoId[1]) {
     type = 'video';
     image = 'http://img.youtube.com/vi/' + videoId[1] + '/default.jpg';
-  } else if (regexps.image.test(raw) || /^data:image\/(.+);base64,(.*)$/.test(raw)) {
+  } else if (regexps.image.link.test(raw) || regexps.image.dataURL.test(raw)) {
     type = 'image';
     image = raw;
   } else if (regexps.audio.test(raw)) {
