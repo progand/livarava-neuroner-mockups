@@ -22,7 +22,8 @@
         <fieldset class="form-group">
             <label class="form-control-label">Write or paste text or url</label>
           {{input type="text" class="form-control" placeholder="Enter some text" required="required" value=simpleNeuronRawData autofocus="true"}}
-            <p class="text-muted form-control-label">If you want to add image or video from web - just paste link here</p>
+            <p class="text-muted form-control-label">If you want to add image or video from web - just paste link
+                here</p>
         </fieldset>
 
       {{#if newSimpleNeuron}}
@@ -37,13 +38,16 @@
 {{#if isRSSFormActive}}
     <form {{action 'addRSSNeuron' on='submit'}}>
         <fieldset class="form-group {{if rssNeuronRawData (unless newRSSNeuron 'has-warning' 'has-success')}}">
-            <label class="form-control-label"> Write or paste RSS url </label>
+            <label class="form-control-label {{if rssNeuronRawData (unless newRSSNeuron 'form-control-warning' 'form-control-success')}}">
+                Write or paste RSS url </label>
           {{input type="url" class="form-control" placeholder="Enter rss url" required="required" value=rssNeuronRawData autofocus="true"}}
-            <p class="text-muted form-control-label">Only links allowed here</p>
+            <p class="text-muted"></p>
         </fieldset>
 
       {{#if newRSSNeuron}}
-        {{neuron-list-item neuron=newRSSNeuron}}
+          <div class="m-b-1">
+            {{neuron-list-item neuron=newRSSNeuron}}
+          </div>
       {{/if}}
 
         <button type="submit" class="btn btn-primary {{unless newRSSNeuron 'disabled'}}">Add RSS</button>
