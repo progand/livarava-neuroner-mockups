@@ -29,15 +29,15 @@
         {{neuron-list-item neuron=newSimpleNeuron}}
       {{/if}}
 
-        <input type="submit" class="btn btn-primary {{unless newSimpleNeuron 'disabled'}}"  value="Add"/>
+        <input type="submit" class="btn btn-primary {{unless newSimpleNeuron 'disabled'}}" value="Add"/>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}
 
 {{#if isRSSFormActive}}
     <form {{action 'addRSSNeuron'}}>
-        <fieldset class="form-group">
-            <label>Write or paste RSS url</label>
+        <fieldset class="form-group {{if rssNeuronRawData (unless newRSSNeuron 'has-warning' 'has-success')}}">
+            <label> Write or paste RSS url </label>
           {{input type="url" class="form-control" placeholder="Enter rss url" required="required" value=rssNeuronRawData autofocus="true"}}
             <small class="text-muted">Only links allowed here</small>
         </fieldset>
@@ -46,7 +46,7 @@
         {{neuron-list-item neuron=newRSSNeuron}}
       {{/if}}
 
-        <input type="submit" class="btn btn-primary {{unless newRSSNeuron 'disabled'}}"  value="Add RSS"/>
+        <input type="submit" class="btn btn-primary {{unless newRSSNeuron 'disabled'}}" value="Add RSS"/>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}
