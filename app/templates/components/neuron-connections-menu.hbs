@@ -18,7 +18,7 @@
 </form>
 
 {{#if isSimpleFormActive}}
-    <form {{action 'addSimpleNeuron'}}>
+    <form {{action 'addSimpleNeuron' on='submit'}}>
         <fieldset class="form-group">
             <label>Write or paste text or url</label>
           {{input type="text" class="form-control" placeholder="Enter some text" required="required" value=simpleNeuronRawData autofocus="true"}}
