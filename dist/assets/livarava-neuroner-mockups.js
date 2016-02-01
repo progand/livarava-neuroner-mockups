@@ -644,8 +644,32 @@ define('livarava-neuroner-mockups/components/neuron-additional-info', ['exports'
 define('livarava-neuroner-mockups/components/neuron-article', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({});
 });
-define('livarava-neuroner-mockups/components/neuron-connections-menu', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Component.extend({});
+define('livarava-neuroner-mockups/components/neuron-connections-menu', ['exports', 'ember', 'livarava-neuroner-mockups/utils/parse-simple-neuron'], function (exports, _ember, _livaravaNeuronerMockupsUtilsParseSimpleNeuron) {
+  exports['default'] = _ember['default'].Component.extend({
+    activeForm: 'simple',
+    actions: {
+      setActiveForm: function setActiveForm() {
+        var activeForm = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+
+        this.set('activeForm', activeForm);
+      },
+      addSimpleNeuron: function addSimpleNeuron() {
+        var data = this.get('simpleNeuronRawData');
+
+        if (!data) {
+          return;
+        }
+
+        console.log(this.get('simpleNeuronRawData'));
+      }
+    },
+    isSimpleFormActive: _ember['default'].computed('activeForm', function () {
+      return this.get('activeForm') === 'simple';
+    }),
+    newSimpleNeuron: _ember['default'].computed('simpleNeuronRawData', function () {
+      return (0, _livaravaNeuronerMockupsUtilsParseSimpleNeuron['default'])(this.get('simpleNeuronRawData'));
+    })
+  });
 });
 define('livarava-neuroner-mockups/components/neuron-connections', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({
@@ -672,6 +696,9 @@ define('livarava-neuroner-mockups/components/neuron-general-info', ['exports', '
       }
     }
   });
+});
+define('livarava-neuroner-mockups/components/neuron-list-item', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({});
 });
 define('livarava-neuroner-mockups/components/neuron-rss-menu', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({
@@ -3323,6 +3350,139 @@ define("livarava-neuroner-mockups/templates/components/neuron-article", ["export
 });
 define("livarava-neuroner-mockups/templates/components/neuron-connections-menu", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 27,
+                "column": 6
+              },
+              "end": {
+                "line": 29,
+                "column": 6
+              }
+            },
+            "moduleName": "livarava-neuroner-mockups/templates/components/neuron-connections-menu.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("        ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+            return morphs;
+          },
+          statements: [["inline", "neuron-list-item", [], ["neuron", ["subexpr", "@mut", [["get", "newSimpleNeuron", ["loc", [null, [28, 34], [28, 49]]]]], [], []]], ["loc", [null, [28, 8], [28, 51]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 19,
+              "column": 0
+            },
+            "end": {
+              "line": 34,
+              "column": 0
+            }
+          },
+          "moduleName": "livarava-neuroner-mockups/templates/components/neuron-connections-menu.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("form");
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("fieldset");
+          dom.setAttribute(el2, "class", "form-group");
+          var el3 = dom.createTextNode("\n            ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("label");
+          var el4 = dom.createTextNode("Write or paste text or url");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n          ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n            ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("small");
+          dom.setAttribute(el3, "class", "text-muted");
+          var el4 = dom.createTextNode("If you want to add image or video from web - just paste link here");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n\n");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("input");
+          dom.setAttribute(el2, "type", "submit");
+          dom.setAttribute(el2, "class", "btn btn-primary");
+          dom.setAttribute(el2, "value", "Add");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("button");
+          dom.setAttribute(el2, "class", "btn btn-secondary");
+          var el3 = dom.createTextNode("Cancel");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1]);
+          var element1 = dom.childAt(element0, [7]);
+          var morphs = new Array(4);
+          morphs[0] = dom.createElementMorph(element0);
+          morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]), 3, 3);
+          morphs[2] = dom.createMorphAt(element0, 3, 3);
+          morphs[3] = dom.createElementMorph(element1);
+          return morphs;
+        },
+        statements: [["element", "action", ["addSimpleNeuron"], [], ["loc", [null, [20, 10], [20, 38]]]], ["inline", "input", [], ["type", "text", "class", "form-control", "placeholder", "Enter some text", "required", "required", "value", ["subexpr", "@mut", [["get", "simpleNeuronRawData", ["loc", [null, [23, 107], [23, 126]]]]], [], []], "autofocus", "true"], ["loc", [null, [23, 10], [23, 145]]]], ["block", "if", [["get", "newSimpleNeuron", ["loc", [null, [27, 12], [27, 27]]]]], [], 0, null, ["loc", [null, [27, 6], [29, 13]]]], ["element", "action", ["setActiveForm", null], [], ["loc", [null, [32, 42], [32, 73]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })();
     return {
       meta: {
         "fragmentReason": {
@@ -3337,7 +3497,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections-menu",
             "column": 0
           },
           "end": {
-            "line": 21,
+            "line": 39,
             "column": 0
           }
         },
@@ -3350,7 +3510,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections-menu",
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("form");
-        dom.setAttribute(el1, "class", "form-inline");
+        dom.setAttribute(el1, "class", "form-inline m-b-2");
         var el2 = dom.createTextNode("\n    ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
@@ -3385,14 +3545,14 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections-menu",
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("button");
-        dom.setAttribute(el4, "class", "dropdown-item");
+        dom.setAttribute(el4, "class", "dropdown-item disabled");
         var el5 = dom.createTextNode("Upload image");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("button");
-        dom.setAttribute(el4, "class", "dropdown-item");
+        dom.setAttribute(el4, "class", "dropdown-item disabled");
         var el5 = dom.createTextNode("Upload audio");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
@@ -3404,7 +3564,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections-menu",
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("button");
-        dom.setAttribute(el4, "class", "dropdown-item");
+        dom.setAttribute(el4, "class", "dropdown-item disabled");
         var el5 = dom.createTextNode("Post");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
@@ -3424,6 +3584,10 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections-menu",
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
@@ -3433,105 +3597,22 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections-menu",
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(1);
-        morphs[0] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        var element2 = dom.childAt(fragment, [0, 1, 3, 1]);
+        var morphs = new Array(3);
+        morphs[0] = dom.createElementMorph(element2);
+        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [20, 0], [20, 9]]]]],
+      statements: [["element", "action", ["setActiveForm", "simple"], [], ["loc", [null, [8, 42], [8, 77]]]], ["block", "if", [["get", "isSimpleFormActive", ["loc", [null, [19, 6], [19, 24]]]]], [], 0, null, ["loc", [null, [19, 0], [34, 7]]]], ["content", "yield", ["loc", [null, [38, 0], [38, 9]]]]],
       locals: [],
-      templates: []
+      templates: [child0]
     };
   })());
 });
 define("livarava-neuroner-mockups/templates/components/neuron-connections", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
-      var child0 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 6,
-                "column": 10
-              },
-              "end": {
-                "line": 8,
-                "column": 10
-              }
-            },
-            "moduleName": "livarava-neuroner-mockups/templates/components/neuron-connections.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("              ");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createElement("img");
-            dom.setAttribute(el1, "class", "media-object feed-item-image");
-            dom.setAttribute(el1, "width", "60");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-            var element1 = dom.childAt(fragment, [1]);
-            var morphs = new Array(2);
-            morphs[0] = dom.createAttrMorph(element1, 'src');
-            morphs[1] = dom.createAttrMorph(element1, 'alt');
-            return morphs;
-          },
-          statements: [["attribute", "src", ["concat", [["get", "neuron.image", ["loc", [null, [7, 63], [7, 75]]]]]]], ["attribute", "alt", ["concat", [["get", "neuron.title", ["loc", [null, [7, 86], [7, 98]]]]]]]],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child1 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 12,
-                "column": 38
-              },
-              "end": {
-                "line": 12,
-                "column": 85
-              }
-            },
-            "moduleName": "livarava-neuroner-mockups/templates/components/neuron-connections.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createComment("");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-            var morphs = new Array(1);
-            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-            dom.insertBoundary(fragment, 0);
-            dom.insertBoundary(fragment, null);
-            return morphs;
-          },
-          statements: [["content", "neuron.title", ["loc", [null, [12, 69], [12, 85]]]]],
-          locals: [],
-          templates: []
-        };
-      })();
       return {
         meta: {
           "fragmentReason": false,
@@ -3543,7 +3624,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
               "column": 0
             },
             "end": {
-              "line": 18,
+              "line": 5,
               "column": 0
             }
           },
@@ -3555,74 +3636,22 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
         hasRendered: false,
         buildFragment: function buildFragment(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("    ");
+          var el1 = dom.createTextNode("  ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createElement("div");
-          dom.setAttribute(el1, "class", "media");
-          var el2 = dom.createTextNode("\n        ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("div");
-          dom.setAttribute(el2, "class", "media-left");
-          var el3 = dom.createTextNode("\n");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createComment("");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("        ");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n\n        ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("div");
-          dom.setAttribute(el2, "class", "media-body");
-          var el3 = dom.createTextNode("\n            ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("h5");
-          dom.setAttribute(el3, "class", "media-heading");
-          var el4 = dom.createComment("");
-          dom.appendChild(el3, el4);
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("\n            ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("ul");
-          dom.setAttribute(el3, "class", "list-inline pull-left");
-          var el4 = dom.createTextNode("\n                ");
-          dom.appendChild(el3, el4);
-          var el4 = dom.createElement("li");
-          var el5 = dom.createElement("span");
-          dom.setAttribute(el5, "class", "text-muted");
-          var el6 = dom.createTextNode("Added:");
-          dom.appendChild(el5, el6);
-          dom.appendChild(el4, el5);
-          var el5 = dom.createTextNode(" ");
-          dom.appendChild(el4, el5);
-          var el5 = dom.createComment("");
-          dom.appendChild(el4, el5);
-          dom.appendChild(el3, el4);
-          var el4 = dom.createTextNode("\n            ");
-          dom.appendChild(el3, el4);
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("\n        ");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n    ");
-          dom.appendChild(el1, el2);
+          var el1 = dom.createComment("");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element2 = dom.childAt(fragment, [1]);
-          var element3 = dom.childAt(element2, [3]);
-          var morphs = new Array(3);
-          morphs[0] = dom.createMorphAt(dom.childAt(element2, [1]), 1, 1);
-          morphs[1] = dom.createMorphAt(dom.childAt(element3, [1]), 0, 0);
-          morphs[2] = dom.createMorphAt(dom.childAt(element3, [3, 1]), 2, 2);
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
           return morphs;
         },
-        statements: [["block", "link-to", ["search", ["get", "neuron.id", ["loc", [null, [6, 30], [6, 39]]]]], [], 0, null, ["loc", [null, [6, 10], [8, 22]]]], ["block", "link-to", ["search", ["get", "neuron.id", ["loc", [null, [12, 58], [12, 67]]]]], [], 1, null, ["loc", [null, [12, 38], [12, 97]]]], ["inline", "moment-to-now", [["get", "neuron.created", ["loc", [null, [14, 75], [14, 89]]]]], [], ["loc", [null, [14, 59], [14, 91]]]]],
+        statements: [["inline", "neuron-list-item", [], ["neuron", ["subexpr", "@mut", [["get", "neuron", ["loc", [null, [4, 28], [4, 34]]]]], [], []]], ["loc", [null, [4, 2], [4, 36]]]]],
         locals: ["neuron"],
-        templates: [child0, child1]
+        templates: []
       };
     })();
     var child1 = (function () {
@@ -3633,11 +3662,11 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
           "loc": {
             "source": null,
             "start": {
-              "line": 19,
+              "line": 6,
               "column": 0
             },
             "end": {
-              "line": 23,
+              "line": 10,
               "column": 0
             }
           },
@@ -3673,7 +3702,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
           morphs[0] = dom.createElementMorph(element0);
           return morphs;
         },
-        statements: [["element", "action", ["showMore"], [], ["loc", [null, [21, 53], [21, 74]]]]],
+        statements: [["element", "action", ["showMore"], [], ["loc", [null, [8, 53], [8, 74]]]]],
         locals: [],
         templates: []
       };
@@ -3692,7 +3721,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
             "column": 0
           },
           "end": {
-            "line": 23,
+            "line": 10,
             "column": 7
           }
         },
@@ -3723,7 +3752,7 @@ define("livarava-neuroner-mockups/templates/components/neuron-connections", ["ex
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["block", "each", [["get", "visibleItems", ["loc", [null, [3, 8], [3, 20]]]]], [], 0, null, ["loc", [null, [3, 0], [18, 9]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [19, 6], [19, 13]]]]], [], 1, null, ["loc", [null, [19, 0], [23, 7]]]]],
+      statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]], ["block", "each", [["get", "visibleItems", ["loc", [null, [3, 8], [3, 20]]]]], [], 0, null, ["loc", [null, [3, 0], [5, 9]]]], ["block", "if", [["get", "hasMore", ["loc", [null, [6, 6], [6, 13]]]]], [], 1, null, ["loc", [null, [6, 0], [10, 7]]]]],
       locals: [],
       templates: [child0, child1]
     };
@@ -4248,6 +4277,186 @@ define("livarava-neuroner-mockups/templates/components/neuron-general-info", ["e
       statements: [["inline", "content-editable", [], ["value", ["subexpr", "@mut", [["get", "model.title", ["loc", [null, [1, 25], [1, 36]]]]], [], []], "tagName", "h1", "placeholder", "Input title here...", "type", "text", "allowNewlines", false], ["loc", [null, [1, 0], [1, 118]]]], ["content", "model.stats.users", ["loc", [null, [4, 71], [4, 92]]]], ["content", "model.stats.axons", ["loc", [null, [5, 74], [5, 95]]]], ["content", "model.stats.views", ["loc", [null, [6, 74], [6, 95]]]], ["block", "if", [["get", "hasExternalURL", ["loc", [null, [9, 6], [9, 20]]]]], [], 0, null, ["loc", [null, [9, 0], [21, 7]]]], ["attribute", "class", ["concat", ["nav-link ", ["subexpr", "if", [["get", "showingDescription", ["loc", [null, [25, 32], [25, 50]]]], "active"], [], ["loc", [null, [25, 27], [25, 61]]]]]]], ["element", "action", ["showDescription", true], [], ["loc", [null, [25, 71], [25, 104]]]], ["block", "if", [["get", "hasExternalURL", ["loc", [null, [27, 8], [27, 22]]]]], [], 1, null, ["loc", [null, [27, 2], [32, 9]]]], ["block", "if", [["get", "showingDescription", ["loc", [null, [36, 8], [36, 26]]]]], [], 2, 3, ["loc", [null, [36, 2], [44, 9]]]], ["content", "yield", ["loc", [null, [47, 0], [47, 9]]]]],
       locals: [],
       templates: [child0, child1, child2, child3]
+    };
+  })());
+});
+define("livarava-neuroner-mockups/templates/components/neuron-list-item", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 3,
+              "column": 6
+            },
+            "end": {
+              "line": 5,
+              "column": 6
+            }
+          },
+          "moduleName": "livarava-neuroner-mockups/templates/components/neuron-list-item.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("          ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("img");
+          dom.setAttribute(el1, "class", "media-object feed-item-image");
+          dom.setAttribute(el1, "width", "60");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1]);
+          var morphs = new Array(2);
+          morphs[0] = dom.createAttrMorph(element0, 'src');
+          morphs[1] = dom.createAttrMorph(element0, 'alt');
+          return morphs;
+        },
+        statements: [["attribute", "src", ["concat", [["get", "neuron.image", ["loc", [null, [4, 59], [4, 71]]]]]]], ["attribute", "alt", ["concat", [["get", "neuron.title", ["loc", [null, [4, 82], [4, 94]]]]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 9,
+              "column": 34
+            },
+            "end": {
+              "line": 9,
+              "column": 81
+            }
+          },
+          "moduleName": "livarava-neuroner-mockups/templates/components/neuron-list-item.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [["content", "neuron.title", ["loc", [null, [9, 65], [9, 81]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "triple-curlies"
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 14,
+            "column": 6
+          }
+        },
+        "moduleName": "livarava-neuroner-mockups/templates/components/neuron-list-item.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "media");
+        var el2 = dom.createTextNode("\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "media-left");
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("    ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "media-body");
+        var el3 = dom.createTextNode("\n        ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h5");
+        dom.setAttribute(el3, "class", "media-heading");
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n        ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("ul");
+        dom.setAttribute(el3, "class", "list-inline pull-left");
+        var el4 = dom.createTextNode("\n            ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("li");
+        var el5 = dom.createElement("span");
+        dom.setAttribute(el5, "class", "text-muted");
+        var el6 = dom.createTextNode("Added:");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode(" ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n        ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element1 = dom.childAt(fragment, [0]);
+        var element2 = dom.childAt(element1, [3]);
+        var morphs = new Array(3);
+        morphs[0] = dom.createMorphAt(dom.childAt(element1, [1]), 1, 1);
+        morphs[1] = dom.createMorphAt(dom.childAt(element2, [1]), 0, 0);
+        morphs[2] = dom.createMorphAt(dom.childAt(element2, [3, 1]), 2, 2);
+        return morphs;
+      },
+      statements: [["block", "link-to", ["search", ["get", "neuron.id", ["loc", [null, [3, 26], [3, 35]]]]], [], 0, null, ["loc", [null, [3, 6], [5, 18]]]], ["block", "link-to", ["search", ["get", "neuron.id", ["loc", [null, [9, 54], [9, 63]]]]], [], 1, null, ["loc", [null, [9, 34], [9, 93]]]], ["inline", "moment-to-now", [["get", "neuron.created", ["loc", [null, [11, 71], [11, 85]]]]], [], ["loc", [null, [11, 55], [11, 87]]]]],
+      locals: [],
+      templates: [child0, child1]
     };
   })());
 });
@@ -5367,6 +5576,59 @@ define('livarava-neuroner-mockups/transitions', ['exports'], function (exports) 
     // the false state.
     this.reverse('toRight', { duration: 300 }));
   };
+});
+define('livarava-neuroner-mockups/utils/parse-simple-neuron', ['exports'], function (exports) {
+  exports['default'] = parseSimpleNeuron;
+
+  function parseSimpleNeuron() {
+    var raw = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
+    var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+    var type = 'text',
+        image = '/img/neurons/text.png',
+        url;
+
+    if (!(raw && _.isString(raw))) {
+      return null;
+    }
+
+    var videoId = raw.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+    if (videoId !== null && videoId[1]) {
+      type = 'video';
+      image = 'http://img.youtube.com/vi/' + videoId[1] + '/default.jpg';
+    } else if (/\.(jpeg|jpg|gif|png)$/.test(raw) || /^data:image\/(.+);base64,(.*)$/.test(raw)) {
+      type = 'image';
+      image = raw;
+    } else if (/^data:audio\/(.+);base64,(.*)$/.test(raw)) {
+      type = 'audio';
+      image = '/img/neurons/audio.png';
+    } else if (/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/.test(raw)) {
+      type = 'link';
+      image = '/img/neurons/link.png';
+    } else if (/^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i.test(raw)) {
+      type = 'phone';
+      image = '/img/neurons/phone.png';
+    } else if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(raw)) {
+      type = 'email';
+      image = '/img/neurons/email.png';
+    } else {
+      options.header = raw;
+    }
+
+    if (['video', 'image', 'audio', 'link'].contains(type)) {
+      url = raw;
+    }
+
+    return {
+      id: Date.now(),
+      created: new Date(),
+      title: options.title || raw,
+      url: url,
+      image: image,
+      type: type,
+      type_title: type
+    };
+  }
 });
 /* jshint ignore:start */
 

@@ -17,14 +17,18 @@
 </form>
 
 {{#if isSimpleFormActive}}
-    <form class="" {{action 'addSimpleNeuron'}}>
+    <form {{action 'addSimpleNeuron'}}>
         <fieldset class="form-group">
             <label>Write or paste text or url</label>
           {{input type="text" class="form-control" placeholder="Enter some text" required="required" value=simpleNeuronRawData autofocus="true"}}
             <small class="text-muted">If you want to add image or video from web - just paste link here</small>
         </fieldset>
 
-        <button class="btn btn-primary" type="submit">Add</button>
+      {{#if newSimpleNeuron}}
+        {{neuron-list-item neuron=newSimpleNeuron}}
+      {{/if}}
+
+        <input type="submit" class="btn btn-primary" value="Add"/>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}

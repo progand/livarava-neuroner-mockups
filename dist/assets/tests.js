@@ -52,6 +52,15 @@ define('livarava-neuroner-mockups/tests/components/neuron-general-info.jshint', 
     assert.ok(true, 'components/neuron-general-info.js should pass jshint.');
   });
 });
+define('livarava-neuroner-mockups/tests/components/neuron-list-item.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/neuron-list-item.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/neuron-list-item.js should pass jshint.');
+  });
+});
 define('livarava-neuroner-mockups/tests/components/neuron-rss-menu.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -942,6 +951,156 @@ define('livarava-neuroner-mockups/tests/integration/components/neuron-info-test.
     assert.ok(true, 'integration/components/neuron-info-test.js should pass jshint.');
   });
 });
+define('livarava-neuroner-mockups/tests/integration/components/neuron-list-item-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('neuron-list-item', 'Integration | Component | neuron list item', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'fragmentReason': {
+            'name': 'missing-wrapper',
+            'problems': ['wrong-type']
+          },
+          'revision': 'Ember@2.3.0',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 20
+            }
+          }
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'neuron-list-item', ['loc', [null, [1, 0], [1, 20]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:" + EOL +
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'fragmentReason': false,
+            'revision': 'Ember@2.3.0',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'fragmentReason': {
+            'name': 'missing-wrapper',
+            'problems': ['wrong-type']
+          },
+          'revision': 'Ember@2.3.0',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'neuron-list-item', [], [], 0, null, ['loc', [null, [2, 4], [4, 25]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('livarava-neuroner-mockups/tests/integration/components/neuron-list-item-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/neuron-list-item-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/neuron-list-item-test.js should pass jshint.');
+  });
+});
 define('livarava-neuroner-mockups/tests/integration/components/neuron-rss-feed-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('neuron-rss-feed', 'Integration | Component | neuron rss feed', {
@@ -1660,6 +1819,34 @@ define('livarava-neuroner-mockups/tests/unit/routes/search-test.jshint', ['expor
   QUnit.test('unit/routes/search-test.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/search-test.js should pass jshint.');
+  });
+});
+define('livarava-neuroner-mockups/tests/unit/utils/parse-simple-neuron-test', ['exports', 'livarava-neuroner-mockups/utils/parse-simple-neuron', 'qunit'], function (exports, _livaravaNeuronerMockupsUtilsParseSimpleNeuron, _qunit) {
+
+  (0, _qunit.module)('Unit | Utility | parse simple neuron');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _livaravaNeuronerMockupsUtilsParseSimpleNeuron['default'])();
+    assert.ok(result);
+  });
+});
+define('livarava-neuroner-mockups/tests/unit/utils/parse-simple-neuron-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/utils');
+  QUnit.test('unit/utils/parse-simple-neuron-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/utils/parse-simple-neuron-test.js should pass jshint.');
+  });
+});
+define('livarava-neuroner-mockups/tests/utils/parse-simple-neuron.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - utils');
+  QUnit.test('utils/parse-simple-neuron.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'utils/parse-simple-neuron.js should pass jshint.');
   });
 });
 /* jshint ignore:start */
