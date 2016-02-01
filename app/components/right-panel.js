@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  visible: true,
+  visible: false,
   actions: {
     toggle(){
       this.set('visible', !this.get('visible'));

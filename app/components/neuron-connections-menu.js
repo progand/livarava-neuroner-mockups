@@ -2,7 +2,7 @@ import Ember from 'ember';
 import parse from '../utils/parse-simple-neuron';
 
 export default Ember.Component.extend({
-  activeForm: 'simple',
+  activeForm: '',
   actions: {
     setActiveForm(activeForm = null){
       this.set('activeForm', activeForm);
