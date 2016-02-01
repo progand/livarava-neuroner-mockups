@@ -1,20 +1,34 @@
-<form class="form-inline">
+<form class="form-inline m-b-2">
     <div class="btn-group">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
             <i class="fa fa-plus"></i> Add
         </button>
         <div class="dropdown-menu">
-            <button class="dropdown-item">Text / Link</button>
-            <button class="dropdown-item">Upload image</button>
-            <button class="dropdown-item">Upload audio</button>
+            <button class="dropdown-item" {{action 'setActiveForm' 'simple'}}>Text / Link</button>
+            <button class="dropdown-item disabled">Upload image</button>
+            <button class="dropdown-item disabled">Upload audio</button>
 
             <div class="dropdown-divider"></div>
-            <button class="dropdown-item">Post</button>
+            <button class="dropdown-item disabled">Post</button>
             <button class="dropdown-item disabled">Project</button>
         </div>
     </div>
 </form>
+
+{{#if isSimpleFormActive}}
+    <form class="" {{action 'addSimpleNeuron'}}>
+        <fieldset class="form-group">
+            <label>Write or paste text or url</label>
+          {{input type="text" class="form-control" placeholder="Enter some text" required="required" value=simpleNeuronRawData autofocus="true"}}
+            <small class="text-muted">If you want to add image or video from web - just paste link here</small>
+        </fieldset>
+
+        <button class="btn btn-primary" type="submit">Add</button>
+        <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
+    </form>
+{{/if}}
+
 
 
 {{yield}}
