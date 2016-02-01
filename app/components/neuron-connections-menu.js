@@ -8,13 +8,11 @@ export default Ember.Component.extend({
       this.set('activeForm', activeForm);
     },
     addSimpleNeuron(){
-      let data = this.get('simpleNeuronRawData');
-
-      if (!data) {
+      if (!this.get('newSimpleNeuron')) {
         return;
       }
-
-      console.log(this.get('simpleNeuronRawData'));
+      this.set('model.connections', [this.get('newSimpleNeuron')].concat(this.get('model.connections')));
+      this.set('simpleNeuronRawData', '');
     }
   },
   isSimpleFormActive: Ember.computed('activeForm', function () {

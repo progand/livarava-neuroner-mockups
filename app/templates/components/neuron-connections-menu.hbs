@@ -28,7 +28,7 @@
         {{neuron-list-item neuron=newSimpleNeuron}}
       {{/if}}
 
-        <input type="submit" class="btn btn-primary" value="Add"/>
+        <input type="submit" class="btn btn-primary {{unless newSimpleNeuron 'disabled'}}"  value="Add"/>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}
