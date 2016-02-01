@@ -16,11 +16,11 @@ export default Ember.Component.extend({
       this.set('simpleNeuronRawData', '');
     },
     addRSSNeuron(){
-      if (!this.get('newSimpleNeuron')) {
+      if (!this.get('newRSSNeuron')) {
         return;
       }
-      this.set('model.connections', [this.get('newSimpleNeuron')].concat(this.get('model.connections')));
-      this.set('simpleNeuronRawData', '');
+      this.set('model.connections', [this.get('newRSSNeuron')].concat(this.get('model.connections')));
+      this.set('rssNeuronRawData', '');
     }
   },
   isSimpleFormActive: Ember.computed('activeForm', function () {
@@ -32,7 +32,7 @@ export default Ember.Component.extend({
   newSimpleNeuron: Ember.computed('simpleNeuronRawData', function () {
     return parse(this.get('simpleNeuronRawData'));
   }),
-  newRSSNeuron: Ember.computed('simpleNeuronRawData', function () {
-    return parse(this.get('simpleNeuronRawData'), {type: 'rss'});
+  newRSSNeuron: Ember.computed('rssNeuronRawData', function () {
+    return parse(this.get('rssNeuronRawData'), {type: 'rss'});
   })
 });
