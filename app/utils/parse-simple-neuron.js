@@ -1,5 +1,5 @@
-export default function parseSimpleNeuron(raw="", options={}) {
-  var type = 'text',
+export default function parseSimpleNeuron(raw = "", options = {}) {
+  var {type} = options,
     image = '/img/neurons/text.png',
     url;
 
@@ -8,7 +8,9 @@ export default function parseSimpleNeuron(raw="", options={}) {
   }
 
   var videoId = raw.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
-  if (videoId !== null && videoId[1]) {
+  if (type) {
+  }
+  else if (videoId !== null && videoId[1]) {
     type = 'video';
     image = 'http://img.youtube.com/vi/' + videoId[1] + '/default.jpg';
   } else if (/\.(jpeg|jpg|gif|png)$/.test(raw) || /^data:image\/(.+);base64,(.*)$/.test(raw)) {
@@ -27,10 +29,11 @@ export default function parseSimpleNeuron(raw="", options={}) {
     type = 'email';
     image = '/img/neurons/email.png';
   } else {
-    options.header = raw;
+    type = 'text';
+    options.title = raw;
   }
 
-  if(['video', 'image', 'audio', 'link'].contains(type)){
+  if (['video', 'image', 'audio', 'link'].contains(type)) {
     url = raw;
   }
 

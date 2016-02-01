@@ -6,6 +6,7 @@
         </button>
         <div class="dropdown-menu">
             <button class="dropdown-item" {{action 'setActiveForm' 'simple'}}>Text / Link</button>
+            <button class="dropdown-item" {{action 'setActiveForm' 'rss'}}>RSS Feed</button>
             <button class="dropdown-item disabled">Upload image</button>
             <button class="dropdown-item disabled">Upload audio</button>
 
@@ -29,6 +30,23 @@
       {{/if}}
 
         <input type="submit" class="btn btn-primary {{unless newSimpleNeuron 'disabled'}}"  value="Add"/>
+        <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
+    </form>
+{{/if}}
+
+{{#if isRSSFormActive}}
+    <form {{action 'addRSSNeuron'}}>
+        <fieldset class="form-group">
+            <label>Write or paste text or url</label>
+          {{input type="url" class="form-control" placeholder="Enter rss url" required="required" value=rssNeuronRawData autofocus="true"}}
+            <small class="text-muted">If you want to add image or video from web - just paste link here</small>
+        </fieldset>
+
+      {{#if newRSSNeuron}}
+        {{neuron-list-item neuron=newRSSNeuron}}
+      {{/if}}
+
+        <input type="submit" class="btn btn-primary {{unless newRSSNeuron 'disabled'}}"  value="Add"/>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}
