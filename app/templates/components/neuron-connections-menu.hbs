@@ -35,7 +35,7 @@
 {{/if}}
 
 {{#if isRSSFormActive}}
-    <form {{action 'addRSSNeuron'}}>
+    <form {{action 'addRSSNeuron' on='submit'}}>
         <fieldset class="form-group {{if rssNeuronRawData (unless newRSSNeuron 'has-warning' 'has-success')}}">
             <label> Write or paste RSS url </label>
           {{input type="url" class="form-control" placeholder="Enter rss url" required="required" value=rssNeuronRawData autofocus="true"}}
@@ -46,7 +46,7 @@
         {{neuron-list-item neuron=newRSSNeuron}}
       {{/if}}
 
-        <input type="submit" class="btn btn-primary {{unless newRSSNeuron 'disabled'}}" value="Add RSS"/>
+        <button type="submit" class="btn btn-primary {{unless newRSSNeuron 'disabled'}}">Add RSS</button>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}
