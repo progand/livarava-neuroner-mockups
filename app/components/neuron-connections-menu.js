@@ -14,6 +14,7 @@ export default Ember.Component.extend({
       }
       this.set('model.connections', [this.get('newSimpleNeuron')].concat(this.get('model.connections')));
       this.set('simpleNeuronRawData', '');
+      this.actions.setActiveForm.apply(this);
     },
     addRSSNeuron(){
       if (!this.get('newRSSNeuron')) {
@@ -21,7 +22,7 @@ export default Ember.Component.extend({
       }
       this.set('model.connections', [this.get('newRSSNeuron')].concat(this.get('model.connections')));
       this.set('rssNeuronRawData', '');
-      //this.actions.setActiveForm(null);
+      this.actions.setActiveForm.apply(this);
     }
   },
   isSimpleFormActive: Ember.computed('activeForm', function () {
