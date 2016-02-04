@@ -17,9 +17,13 @@
           {{#if options.showingText}}
               <p>{{{rssFeedItem.text}}}</p>
           {{/if}}
-            <ul class="list-inline pull-left">
-                <li><span class="text-muted">Published:</span> {{moment-to-now rssFeedItem.date}}</li>
+            <button class="btn btn-secondary btn-sm pull-sm-right" title="Create new neuron">Neuron it!</button>
+            <ul class="list-inline">
+                <li class="list-inline-item"><span
+                        class="text-muted">Published:</span> {{moment-to-now rssFeedItem.date}}</li>
+                <li class="list-inline-item"></li>
             </ul>
+
         </div>
     </div>
 {{/each}}
