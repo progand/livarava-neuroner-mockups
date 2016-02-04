@@ -5,8 +5,14 @@
             <i class="fa fa-plus"></i> Add
         </button>
         <div class="dropdown-menu">
-            <button class="dropdown-item" {{action 'setActiveForm' 'simple'}}>Text / Link</button>
-            <button class="dropdown-item" {{action 'setActiveForm' 'image'}}>Upload image</button>
+            <button class="dropdown-item" {{action 'setActiveForm' 'simple'}}>
+                <i class="fa fa-file-o"></i>
+                Text / Link
+            </button>
+            <button class="dropdown-item" {{action 'setActiveForm' 'image'}}>
+                <i class="fa fa-file-image-o"></i>
+                Upload image
+            </button>
             <button class="dropdown-item disabled">Upload audio</button>
 
             <div class="dropdown-divider"></div>

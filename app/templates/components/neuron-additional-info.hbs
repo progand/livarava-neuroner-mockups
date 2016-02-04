@@ -2,10 +2,13 @@
     <div class="btn-group pull-sm-right">
       {{#if hasSpecificInfo}}
           <button class="btn  {{if showingConnections 'btn-info-outline' 'btn-info' }}"
-                  disabled={{unless showingConnections true}} {{action "showInfo"}}>Overview
+                  disabled={{unless showingConnections true}} {{action "showInfo"}}>
+              <i class="fa fa-folder-open"></i>
+              Overview
           </button>
           <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
                   disabled={{showingConnections}} {{action "showConnections"}}>
+              <i class="fa fa-link"></i>
               Connections
           </button>
       {{/if}}

@@ -1,6 +1,6 @@
 {{#unless visible}}
     <a type="button" class="btn btn-link right-panel--toggle-button" {{action "toggle"}}>
-        Show menu...
+        <i class="fa fa-bars"></i> Show menu...
     </a>
 {{/unless}}
 <div class="modal-content right-panel m-a-0 {{if visible 'right-panel--visible'}}">
@@ -8,7 +8,7 @@
         <button type="button" class="close" {{action "toggle"}}>
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-sm-center">Menu</h4>
+        <h4 class="modal-title"><i class="fa fa-bars"></i> Menu</h4>
     </div>
     <div class="modal-body">
         <div class="clearfix">

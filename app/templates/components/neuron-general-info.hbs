@@ -1,9 +1,18 @@
 {{content-editable value=model.title tagName="h1" placeholder="Input title here..." type="text" allowNewlines=false }}
 
 <ul class="list-inline">
-    <li class="list-inline-item">Users: <span class="label label-info">{{model.stats.users}}</span></li>
-    <li class="list-inline-item">Axons: <span class="label label-primary">{{model.stats.axons}}</span></li>
-    <li class="list-inline-item">Views: <span class="label label-success">{{model.stats.views}}</span></li>
+    <li class="list-inline-item">
+        <i class="fa fa-user"></i>
+        <span class="label label-info">{{model.stats.users}}</span>
+    </li>
+    <li class="list-inline-item">
+        <i class="fa fa-link"></i>
+        <span class="label label-primary">{{model.stats.axons}}</span>
+    </li>
+    <li class="list-inline-item">
+        <i class="fa fa-eye"></i>
+        <span class="label label-success">{{model.stats.views}}</span>
+    </li>
 </ul>
 
 {{#if hasExternalURL}}
@@ -22,12 +31,15 @@
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link {{if showingDescription 'active'}}" href="" {{action 'showDescription' true}}>Description</a>
+        <a class="nav-link {{if showingDescription 'active'}}" href="" {{action 'showDescription' true}}>
+            <i class="fa fa-align-left"></i> Description
+        </a>
     </li>
   {{#if hasExternalURL}}
       <li class="nav-item">
-          <a class="nav-link  {{unless showingDescription 'active'}}"
-             href="" {{action 'showDescription' false}}>Source</a>
+          <a class="nav-link  {{unless showingDescription 'active'}}" href="" {{action 'showDescription' false}}>
+              <i class="fa fa-external-link"></i> Source
+          </a>
       </li>
   {{/if}}
 </ul>

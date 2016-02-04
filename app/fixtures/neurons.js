@@ -121,7 +121,7 @@ neurons = neurons.map((neuron, index) => {
     stats: stats,
     created: created,
     feed: feed,
-    id: index
+    id: index + 1
   });
 });
 
