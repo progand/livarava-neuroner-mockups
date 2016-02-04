@@ -11,13 +11,14 @@
     </div>
 
     <div class="media-body">
-        <h5 class="media-heading">
-          {{#if neuron.id}}
+      {{#if neuron.id}}
+          <h5 class="media-heading">
             {{#link-to "search" neuron.id}}{{neuron.title}}{{/link-to}}
-          {{else}}
-            {{neuron.title}}
-          {{/if}}
-        </h5>
+          </h5>
+      {{else}}
+        {{content-editable value=neuron.title tagName="h5" class="media-heading" placeholder="Write title here..." type="text" allowNewlines=false }}
+      {{/if}}
+
         <ul class="list-inline pull-left">
             <li><span class="text-muted">Added:</span> {{moment-to-now neuron.created}}</li>
         </ul>
