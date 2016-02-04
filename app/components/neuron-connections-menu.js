@@ -35,9 +35,9 @@ export default Ember.Component.extend({
     return this.get('activeForm') === 'image';
   }),
   newSimpleNeuron: Ember.computed('simpleNeuronRawData', function () {
-    return parse(this.get('simpleNeuronRawData'));
+    return parse(this.get('simpleNeuronRawData'), {title: this.get('model.title')});
   }),
   newImageNeuron: Ember.computed('imageNeuronRawData', function () {
-    return parse(this.get('imageNeuronRawData'));
+    return parse(this.get('imageNeuronRawData'), {title: this.get('model.title')});
   })
 });

@@ -1,6 +1,7 @@
 export default function parseSimpleNeuron(raw = "", options = {}) {
   var {type} = options,
     url,
+    title,
     image,
     regexps = {
       image: {
@@ -52,11 +53,15 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   if (['video', 'image', 'audio', 'link', 'rss'].contains(type)) {
     url = raw;
   }
+  if(url){
+    title = options.title || raw;
+  } else {
+    title = raw;
+  }
 
   return {
-    //id: Date.now(),
     created: new Date(),
-    title: options.title || raw,
+    title: title,
     url: url,
     image: image,
     type: type,
