@@ -1,14 +1,15 @@
 import Ember from 'ember';
+import ShowMoreListMixin from '../mixins/show-more-list';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(ShowMoreListMixin, {
   options: {
     showingText: false
   },
-  actions: {
-    showMore(){
-      this.set('itemsToShow', this.get('itemsToShow') + 5);
-    }
-  },
+
+  items: Ember.computed('model.feed', function () {
+    return this.get('model.feed');
+  }),
+
   init(){
     this._super.apply(this, arguments);
     this.eventsBus.on('neuron:rss:options', this, 'onOptionsChange');
@@ -16,14 +17,8 @@ export default Ember.Component.extend({
   didDestroyElement(){
     this.eventsBus.off('neuron:rss:options', this, 'onOptionsChange');
   },
+
   onOptionsChange(options){
     this.set('options', options);
-  },
-  itemsToShow: 5,
-  visibleItems: Ember.computed('model.feed', 'itemsToShow', function () {
-    return this.get('model.feed').slice(0, this.get('itemsToShow'));
-  }),
-  hasMore: Ember.computed('model.feed', 'itemsToShow', function () {
-    return this.get('model.feed').length > this.get('itemsToShow');
-  })
+  }
 });
