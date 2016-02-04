@@ -7,7 +7,9 @@ export default Ember.Component.extend(ShowMoreListMixin, {
   },
   actions: {
     onNeuronIt(item){
-      console.log(item);
+      this.set('model.feed', _(this.get('model.feed'))
+        .without(item)
+        .value());
     }
   },
 
