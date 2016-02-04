@@ -3,7 +3,7 @@ import ENV from 'livarava-neuroner-mockups/config/environment';
 import parse from '../utils/parse-simple-neuron';
 
 export default Ember.Component.extend({
-  activeForm: ENV.environment === 'development' ? 'rss' : '',
+  activeForm: ENV.environment === 'development' ? 'simple' : '',
   actions: {
     setActiveForm(activeForm = null){
       this.set('activeForm', activeForm);

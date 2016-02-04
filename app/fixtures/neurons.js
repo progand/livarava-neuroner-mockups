@@ -3,7 +3,7 @@ let neurons = [
     title: 'RSS Feed',
     description: 'This is description of the neuron. You can edit it as well as the title above.',
     url: 'http://blog.aweber.com/feed',
-    image: "/img/neurons/link.png",
+    image: "/img/neurons/rss.png",
     type: 'rss',
     type_title: 'RSS',
     feed: [{

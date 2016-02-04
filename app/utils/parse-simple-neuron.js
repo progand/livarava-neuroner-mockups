@@ -24,7 +24,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
         if (!regexps.url.test(raw)) {
           return null;
         }
-        image = '/img/neurons/link.png';
+        image = '/img/neurons/rss.png';
     }
   } else if (videoId !== null && videoId[1]) {
     type = 'video';
@@ -34,20 +34,20 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     image = raw;
   } else if (regexps.audio.test(raw)) {
     type = 'audio';
-    image = '/img/neurons/audio.png';
   } else if (regexps.url.test(raw)) {
-    type = 'link';
-    image = '/img/neurons/link.png';
+    type = raw.includes('rss') || raw.includes('feed') ? 'rss' : 'link';
   } else if (regexps.phone.test(raw)) {
     type = 'phone';
-    image = '/img/neurons/phone.png';
   } else if (regexps.email.test(raw)) {
     type = 'email';
-    image = '/img/neurons/email.png';
   } else {
     type = 'text';
-    image = '/img/neurons/text.png';
   }
+
+  if (!image) {
+    image = `/img/neurons/${type}.png`;
+  }
+
 
   if (['video', 'image', 'audio', 'link', 'rss'].contains(type)) {
     url = raw;
