@@ -5,6 +5,11 @@ export default Ember.Component.extend(ShowMoreListMixin, {
   options: {
     showingText: false
   },
+  actions: {
+    onNeuronIt(item){
+      console.log(item);
+    }
+  },
 
   items: Ember.computed('model.feed', function () {
     return this.get('model.feed');

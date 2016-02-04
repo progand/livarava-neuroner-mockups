@@ -17,7 +17,7 @@
           {{#if options.showingText}}
               <p>{{{rssFeedItem.text}}}</p>
           {{/if}}
-            <button class="btn btn-secondary btn-sm pull-sm-right" title="Create new neuron">Neuron it!</button>
+            <button class="btn btn-secondary btn-sm pull-sm-right" title="Create new neuron" {{action "onNeuronIt" rssFeedItem}}>Neuron it!</button>
             <ul class="list-inline">
                 <li class="list-inline-item"><span
                         class="text-muted">Published:</span> {{moment-to-now rssFeedItem.date}}</li>
