@@ -1,12 +1,23 @@
 <div class="media">
     <div class="media-left">
-      {{#link-to "search" neuron.id}}
+      {{#if neuron.id}}
+        {{#link-to "search" neuron.id}}
+            <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
+        {{/link-to}}
+      {{else}}
           <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
-      {{/link-to}}
+      {{/if}}
+
     </div>
 
     <div class="media-body">
-        <h5 class="media-heading">{{#link-to "search" neuron.id}}{{neuron.title}}{{/link-to}}</h5>
+        <h5 class="media-heading">
+          {{#if neuron.id}}
+            {{#link-to "search" neuron.id}}{{neuron.title}}{{/link-to}}
+          {{else}}
+            {{neuron.title}}
+          {{/if}}
+        </h5>
         <ul class="list-inline pull-left">
             <li><span class="text-muted">Added:</span> {{moment-to-now neuron.created}}</li>
         </ul>

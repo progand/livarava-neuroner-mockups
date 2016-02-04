@@ -3,7 +3,7 @@ import ENV from 'livarava-neuroner-mockups/config/environment';
 import parse from '../utils/parse-simple-neuron';
 
 export default Ember.Component.extend({
-  activeForm: ENV.environment === 'development' ? 'simple' : '',
+  activeForm: ENV.environment === 'development' ? 'image' : '',
   actions: {
     setActiveForm(activeForm = null){
       this.set('activeForm', activeForm);
@@ -16,25 +16,28 @@ export default Ember.Component.extend({
       this.set('simpleNeuronRawData', '');
       this.actions.setActiveForm.apply(this);
     },
-    addRSSNeuron(){
-      if (!this.get('newRSSNeuron')) {
+    onImageNeuronRawDataLoad(file){
+      this.set('imageNeuronRawData', file.data);
+    },
+    addImageNeuron(){
+      if (!this.get('newImageNeuron')) {
         return;
       }
-      this.set('model.connections', [this.get('newRSSNeuron')].concat(this.get('model.connections')));
-      this.set('rssNeuronRawData', '');
+      this.set('model.connections', [this.get('newImageNeuron')].concat(this.get('model.connections')));
+      this.set('imageNeuronRawData', '');
       this.actions.setActiveForm.apply(this);
     }
   },
   isSimpleFormActive: Ember.computed('activeForm', function () {
     return this.get('activeForm') === 'simple';
   }),
-  isRSSFormActive: Ember.computed('activeForm', function () {
-    return this.get('activeForm') === 'rss';
+  isImageFormActive: Ember.computed('activeForm', function () {
+    return this.get('activeForm') === 'image';
   }),
   newSimpleNeuron: Ember.computed('simpleNeuronRawData', function () {
     return parse(this.get('simpleNeuronRawData'));
   }),
-  newRSSNeuron: Ember.computed('rssNeuronRawData', function () {
-    return parse(this.get('rssNeuronRawData'), {type: 'rss'});
+  newImageNeuron: Ember.computed('imageNeuronRawData', function () {
+    return parse(this.get('imageNeuronRawData'));
   })
 });

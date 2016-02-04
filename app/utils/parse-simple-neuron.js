@@ -54,7 +54,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   }
 
   return {
-    id: Date.now(),
+    //id: Date.now(),
     created: new Date(),
     title: options.title || raw,
     url: url,
