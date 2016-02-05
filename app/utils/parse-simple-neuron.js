@@ -3,6 +3,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     url,
     title,
     image,
+    postDescription,
     regexps = {
       image: {
         link: /\.(jpeg|jpg|gif|png)$/,
@@ -13,12 +14,16 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
       phone: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i,
       email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     };
+  var videoId = '';
 
-  if (!(raw && _.isString(raw))) {
+  if (!_.isObject(raw) && !(raw && _.isString(raw))) {
     return null;
   }
 
-  var videoId = raw.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+  if (!_.isObject(raw)) {
+    videoId = raw.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+  }
+
   if (type) {
     switch (type) {
       case 'rss':
@@ -41,7 +46,11 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     type = 'phone';
   } else if (regexps.email.test(raw)) {
     type = 'email';
-  } else {
+  } else if (_.isObject(raw)) {
+    type = 'post';
+    image = raw.image;
+    postDescription = raw.postDescription;
+  } else{
     type = 'text';
   }
 
@@ -55,6 +64,8 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   }
   if(url){
     title = options.title || raw;
+  } else if (_.isObject(raw)) {
+    title = raw.title;
   } else {
     title = raw;
   }
@@ -64,6 +75,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     title: title,
     url: url,
     image: image,
+    postDescription: postDescription,
     type: type,
     type_title: type
   };

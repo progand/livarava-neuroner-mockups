@@ -26,6 +26,16 @@ export default Ember.Component.extend({
       this.set('model.connections', [this.get('newImageNeuron')].concat(this.get('model.connections')));
       this.set('imageNeuronRawData', '');
       this.actions.setActiveForm.apply(this);
+    },
+    addPostNeuron() {
+      if (!this.get('newPostNeuron')) {
+        return;
+      }
+      this.set('model.connections', [this.get('newPostNeuron')].concat(this.get('model.connections')));
+      this.set('postTitle', '');
+      this.set('postImage', '');
+      this.set('postDescription', '');
+      this.actions.setActiveForm.apply(this);
     }
   },
   isSimpleFormActive: Ember.computed('activeForm', function () {
@@ -34,10 +44,21 @@ export default Ember.Component.extend({
   isImageFormActive: Ember.computed('activeForm', function () {
     return this.get('activeForm') === 'image';
   }),
+  isPostFormActive: Ember.computed('activeForm', function () {
+    return this.get('activeForm') === 'post';
+  }),
   newSimpleNeuron: Ember.computed('simpleNeuronRawData', function () {
     return parse(this.get('simpleNeuronRawData'), {title: this.get('model.title')});
   }),
   newImageNeuron: Ember.computed('imageNeuronRawData', function () {
     return parse(this.get('imageNeuronRawData'), {title: this.get('model.title')});
+  }),
+  newPostNeuron: Ember.computed('postTitle', 'postImage', 'postDescription', function () {
+    let postData = {
+      title: this.get('postTitle'),
+      image: this.get('postImage'),
+      postDescription: this.get('postDescription')
+    };
+    return parse(postData, {title: this.get('model.title')});
   })
 });

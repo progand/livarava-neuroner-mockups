@@ -16,7 +16,7 @@
             <button class="dropdown-item disabled">Upload audio</button>
 
             <div class="dropdown-divider"></div>
-            <button class="dropdown-item disabled">Post</button>
+            <button class="dropdown-item" {{action 'setActiveForm' 'post'}}>Post</button>
             <button class="dropdown-item disabled">Project</button>
         </div>
     </div>
@@ -61,6 +61,26 @@
     </form>
 {{/if}}
 
+{{#if isPostFormActive}}
+    <form {{action 'addPostNeuron' on='submit'}}>
+        <h4>New post neuron</h4>
+        <fieldset class="form-group">
+            <label>Title</label>
+          {{input type="text" class="form-control" placeholder="Enter some text" required="required" value=postTitle autofocus="true"}}
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Image</label>
+          {{input type="url" class="form-control" placeholder="Paste link image" required="required" value=postImage}}
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Description</label>
+          {{textarea class="form-control" cols="80" rows="6" placeholder="Description" required="required" value=postDescription}}
+        </fieldset>
+
+        <input type="submit" class="btn btn-primary {{unless newPostNeuron 'disabled'}}" value="Add"/>
+        <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
+    </form>
+{{/if}}
 
 
 {{yield}}
