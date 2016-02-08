@@ -70,7 +70,6 @@ export default Ember.Component.extend({
   newAudioNeuron: Ember.computed('audioNeuronRawData', function () {
     return parse(this.get('audioNeuronRawData'), {title: this.get('model.title')});
   }),
-  newPostNeuron: Ember.computed('postTitle', 'postImage', 'postDescription', function () {
   newPostNeuron: Ember.computed('postTitle', 'postImage', 'postText', function () {
     let postData = {
       title: this.get('postTitle'),
