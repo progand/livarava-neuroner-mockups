@@ -1,35 +1,43 @@
 <div class="clearfix">
     <div class="btn-group pull-sm-right">
       {{#if hasSpecificInfo}}
-          <button class="btn  {{if showingConnections 'btn-info-outline' 'btn-info' }}"
-                  disabled={{unless showingConnections true}} {{action "showInfo"}}>
+          <button class="btn  {{unless showingInfo 'btn-info-outline' 'btn-info' }}"
+                  disabled={{showingInfo}} {{action "show" "info"}}>
               <i class="fa fa-folder-open"></i>
               Overview
           </button>
-          <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
-                  disabled={{showingConnections}} {{action "showConnections"}}>
-              <i class="fa fa-link"></i>
-              Connections
-          </button>
       {{/if}}
+        <button class="btn {{unless showingComments 'btn-info-outline' 'btn-info'}}"
+                disabled={{showingComments}} {{action "show" "comments"}}>
+            <i class="fa fa-comment"></i>
+            Comments
+        </button>
+        <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
+                disabled={{showingConnections}} {{action "show" "connections"}}>
+            <i class="fa fa-link"></i>
+            Connections
+        </button>
+
     </div>
 </div>
 
 <hr>
-{{#liquid-if showingConnections class="neuron-additional-info-animation"}}
+{{#if showingConnections class="neuron-additional-info-animation"}}
   {{#neuron-connections model=model}}
       <h4>Axons - connected neurons</h4>
   {{/neuron-connections}}
-{{else if hasSpecificInfo}}
+{{else if showingComments}}
+   {{neuron-comments model=model}}
+{{else if showingInfo}}
   {{#if isRSS}}
     {{neuron-rss model=model}}
   {{/if}}
-{{/liquid-if}}
+{{/if}}
 
 
 {{#right-panel}}
   {{#if showingConnections}}
-      {{neuron-connections-menu model=model}}
+    {{neuron-connections-menu model=model}}
   {{else}}
     {{neuron-specific-menu}}
   {{/if}}
