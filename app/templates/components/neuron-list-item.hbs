@@ -18,12 +18,11 @@
       {{else}}
         {{content-editable value=neuron.title tagName="h5" class="media-heading" placeholder="Write title here..." type="text" allowNewlines=false }}
       {{/if}}
-
+      {{#if neuron.text}}
+          <div>{{truncate neuron.text}}</div>
+      {{/if}}
         <ul class="list-inline">
             <li><span class="text-muted">Added:</span> {{moment-to-now neuron.created}}</li>
         </ul>
-        {{#if neuron.text}}
-          <p>{{neuron.text}}</p>
-        {{/if}}
     </div>
 </div>
