@@ -1,21 +1,21 @@
 <div class="clearfix">
-    <div class="btn-group pull-sm-right">
+    <div class="btn-group pull-xs-right">
       {{#if hasSpecificInfo}}
           <button class="btn  {{unless showingInfo 'btn-info-outline' 'btn-info' }}"
                   disabled={{showingInfo}} {{action "show" "info"}}>
               <i class="fa fa-folder-open"></i>
-              Overview
+              <span class="hidden-xs-down">Overview</span>
           </button>
       {{/if}}
         <button class="btn {{unless showingComments 'btn-info-outline' 'btn-info'}}"
                 disabled={{showingComments}} {{action "show" "comments"}}>
             <i class="fa fa-comment"></i>
-            Comments
+            <span class="hidden-xs-down">Comments</span>
         </button>
         <button class="btn {{unless showingConnections 'btn-info-outline' 'btn-info'}}"
                 disabled={{showingConnections}} {{action "show" "connections"}}>
             <i class="fa fa-link"></i>
-            Connections
+            <span class="hidden-xs-down">Connections</span>
         </button>
 
     </div>
