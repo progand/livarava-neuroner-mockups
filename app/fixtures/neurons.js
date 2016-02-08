@@ -3,7 +3,7 @@ let neurons = [
     title: 'RSS Feed',
     description: 'This is description of the neuron. You can edit it as well as the title above.',
     url: 'http://blog.aweber.com/feed',
-    image: "/img/neurons/rss.png",
+    image: "https://www.livarava.com/static/livarava/img/neurons/rss.png",
     type: 'rss',
     type_title: 'RSS',
     feed: [{
@@ -40,7 +40,7 @@ let neurons = [
   },
   {
     "title": "Are You Ready to Seek Funding? This 10-Point Checklist Will Decide.",
-    "image": "/img/neurons/link.png",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/link.png",
     "url": "http://www.entrepreneur.com/article/248777",
     "type": "link",
     "type_title": "link",
@@ -54,31 +54,31 @@ let neurons = [
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava Webinar: Finance and Stocks - Lesson 2",
-    "image": "/img/neurons/event.png",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/event.png",
     "type": "event",
     "type_title": "event",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Fundraising",
-    "image": "/img/neurons/text.png",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/text.png",
     "type": "text",
     "type_title": "text",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "LivaRava",
-    "image": "/img/logo/logo_400x400_vertikal.png",
+    "image": "https://www.livarava.com/static/livarava/img/logo_460x159_black.png",
     "type": "project",
     "type_title": "project",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "+38 (095) 55-55-55",
-    "image": "/img/neurons/phone.png",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/phone.png",
     "type": "phone",
     "type_title": "phone",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "info@livarava.com",
-    "image": "/img/neurons/email.png",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/email.png",
     "type": "email",
     "type_title": "email",
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
@@ -91,7 +91,7 @@ let neurons = [
     "created": new Date(_.random(Date.now() - 24 * 60 * 60 * 1000, Date.now()))
   }, {
     "title": "Post about something",
-    "image": "/img/neurons/post.png",
+    "image": "https://www.livarava.com/static/livarava/img/neurons/post.png",
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "type": "post",
     "type_title": "post",
@@ -117,7 +117,7 @@ neurons = neurons.map((neuron, index) => {
     feed = _(neuron.feed).map(feedItem => {
         return _.extend(feedItem, {
           date: new Date(_.random(datesFrom, Date.now())),
-          image: "/img/neurons/link.png"
+          image: "https://www.livarava.com/static/livarava/img/neurons/link.png"
         });
       })
       .orderBy('date', 'desc')

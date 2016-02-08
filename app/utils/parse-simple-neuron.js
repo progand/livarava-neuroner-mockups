@@ -35,7 +35,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
         if (!regexps.url.test(raw)) {
           return null;
         }
-        image = '/img/neurons/rss.png';
+        image = 'https://www.livarava.com/static/livarava/img/neurons/rss.png';
     }
   } else if (videoId !== null && videoId[1]) {
     type = 'video';
@@ -61,7 +61,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   }
 
   if (!image) {
-    image = `/img/neurons/${type}.png`;
+    image = `https://www.livarava.com/static/livarava/img/neurons/${type}.png`;
   }
 
 
