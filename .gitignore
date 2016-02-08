@@ -18,3 +18,4 @@ testem.log
 .idea/
 *.iml
 .idea
+deploy.sh
