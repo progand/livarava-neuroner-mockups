@@ -3,7 +3,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     url,
     title,
     image,
-    postDescription,
+    text,
     regexps = {
       image: {
         link: /\.(jpeg|jpg|gif|png)$/,
@@ -12,7 +12,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
       post: {
         title: /^[a-zA-Zа-яА-ЯёЁ0-9\ \']+$/,
         image: /\.(jpeg|jpg|gif|png)$/,
-        postDescription: /^[\r\n a-zA-Zа-яА-ЯёЁ0-9\ \']+$/
+        text: /^[\r\n a-zA-Zа-яА-ЯёЁ0-9\ \']+$/
       },
       audio: /^data:audio\/(.+);base64,(.*)$/,
       url: /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/,
@@ -44,10 +44,10 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     type = 'image';
     image = raw;
   }
-  else if (regexps.post.title.test(raw.title) && regexps.post.image.test(raw.image) && regexps.post.postDescription.test(raw.postDescription)) {
+  else if (regexps.post.title.test(raw.title) && regexps.post.image.test(raw.image) && regexps.post.text.test(raw.text)) {
     type = 'post';
     image = raw.image;
-    postDescription = raw.postDescription;
+    text = raw.text;
   }else if (regexps.audio.test(raw)) {
     type = 'audio';
   } else if (regexps.url.test(raw)) {
@@ -81,7 +81,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     title: title,
     url: url,
     image: image,
-    postDescription: postDescription,
+    text: text,
     type: type,
     type_title: type
   };

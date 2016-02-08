@@ -53,13 +53,13 @@ export default Ember.Component.extend({
   newImageNeuron: Ember.computed('imageNeuronRawData', function () {
     return parse(this.get('imageNeuronRawData'), {title: this.get('model.title')});
   }),
-  newPostNeuron: Ember.computed('postTitle', 'postImage', 'postDescription', function () {
+  newPostNeuron: Ember.computed('postTitle', 'postImage', 'postText', function () {
     let postData = {
       title: this.get('postTitle'),
       image: this.get('postImage'),
-      postDescription: this.get('postDescription')
+      text: this.get('postText')
     };
-    if (postData.title !== undefined && postData.image !== undefined && postData.postDescription !== undefined) {
+    if (postData.title !== undefined && postData.image !== undefined && postData.text !== undefined) {
       return parse(postData, {title: this.get('model.title')});
     }
   })
