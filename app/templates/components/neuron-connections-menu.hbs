@@ -13,7 +13,10 @@
                 <i class="fa fa-file-image-o"></i>
                 Upload image
             </button>
-            <button class="dropdown-item disabled">Upload audio</button>
+            <button class="dropdown-item" {{action 'setActiveForm' 'audio'}}>
+                <i class="fa fa-file-audio-o"></i>
+                Upload audio
+            </button>
 
             <div class="dropdown-divider"></div>
             <button class="dropdown-item" {{action 'setActiveForm' 'post'}}>Post</button>
@@ -57,6 +60,26 @@
       {{/if}}
 
         <button type="submit" class="btn btn-primary {{unless newImageNeuron 'disabled'}}">Add Image</button>
+        <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
+    </form>
+{{/if}}
+
+{{#if isAudioFormActive}}
+    <form {{action 'addAudioNeuron' on='submit'}}>
+        <h4>Upload audio</h4>
+
+        <fieldset class="form-group ">
+          {{file-picker fileLoaded="onAudioNeuronRawDataLoad" accept="audio/mp3" readAs='readAsDataURL' hideFileInput=false dropzone=false preview=false}}
+            <small class="text-muted">It is better to upload small (less than 1Mb) mp3 files here.</small>
+        </fieldset>
+
+      {{#if newAudioNeuron}}
+          <div class="m-b-1">
+              {{neuron-list-item neuron=newAudioNeuron}}
+          </div>
+      {{/if}}
+
+        <button type="submit" class="btn btn-primary {{unless newAudioNeuron 'disabled'}}">Add audio</button>
         <button class="btn btn-secondary" {{action 'setActiveForm' null}}>Cancel</button>
     </form>
 {{/if}}
