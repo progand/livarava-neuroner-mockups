@@ -23,5 +23,5 @@ export default Ember.Component.extend(NeuronDeterminator, {
   }),
   showingConnections: Ember.computed('showing', function () {
     return this.get('showing') === 'connections';
-  }),
+  })
 });

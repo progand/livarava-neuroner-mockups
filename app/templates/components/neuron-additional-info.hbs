@@ -27,10 +27,12 @@
       <h4>Axons - connected neurons</h4>
   {{/neuron-connections}}
 {{else if showingComments}}
-   {{neuron-comments model=model}}
+  {{neuron-comments model=model}}
 {{else if showingInfo}}
   {{#if isRSS}}
     {{neuron-rss model=model}}
+  {{else if isPost}}
+    {{neuron-post model=model}}
   {{/if}}
 {{/if}}
 

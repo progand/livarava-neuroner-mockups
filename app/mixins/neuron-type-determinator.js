@@ -11,12 +11,15 @@ export default Ember.Mixin.create({
   isVideo: Ember.computed('model.type', function () {
     return this.get('model.type') === 'video';
   }),
+  isPost: Ember.computed('model.type', function () {
+    return this.get('model.type') === 'post';
+  }),
   hasExternalURL: Ember.computed('model.type', function () {
     return ['image', 'rss', 'video', 'link']
       .includes(this.get('model.type'));
   }),
   hasSpecificInfo: Ember.computed('model.type', function () {
-    return ['rss']
+    return ['rss', 'post']
       .includes(this.get('model.type'));
   })
 });
