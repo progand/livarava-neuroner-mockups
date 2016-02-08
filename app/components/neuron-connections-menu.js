@@ -59,6 +59,8 @@ export default Ember.Component.extend({
       image: this.get('postImage'),
       postDescription: this.get('postDescription')
     };
-    return parse(postData, {title: this.get('model.title')});
+    if (postData.title !== undefined && postData.image !== undefined && postData.postDescription !== undefined) {
+      return parse(postData, {title: this.get('model.title')});
+    }
   })
 });

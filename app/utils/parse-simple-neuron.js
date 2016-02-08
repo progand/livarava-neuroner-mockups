@@ -9,6 +9,11 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
         link: /\.(jpeg|jpg|gif|png)$/,
         dataURL: /^data:image\/(.+);base64,(.*)$/
       },
+      post: {
+        title: /^[a-zA-Zа-яА-ЯёЁ0-9\ \']+$/,
+        image: /\.(jpeg|jpg|gif|png)$/,
+        postDescription: /^[\r\n a-zA-Zа-яА-ЯёЁ0-9\ \']+$/
+      },
       audio: /^data:audio\/(.+);base64,(.*)$/,
       url: /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/,
       phone: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i,
@@ -38,7 +43,12 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
   } else if (regexps.image.link.test(raw) || regexps.image.dataURL.test(raw)) {
     type = 'image';
     image = raw;
-  } else if (regexps.audio.test(raw)) {
+  }
+  else if (regexps.post.title.test(raw.title) && regexps.post.image.test(raw.image) && regexps.post.postDescription.test(raw.postDescription)) {
+    type = 'post';
+    image = raw.image;
+    postDescription = raw.postDescription;
+  }else if (regexps.audio.test(raw)) {
     type = 'audio';
   } else if (regexps.url.test(raw)) {
     type = raw.includes('rss') || raw.includes('feed') ? 'rss' : 'link';
@@ -46,10 +56,6 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     type = 'phone';
   } else if (regexps.email.test(raw)) {
     type = 'email';
-  } else if (_.isObject(raw)) {
-    type = 'post';
-    image = raw.image;
-    postDescription = raw.postDescription;
   } else{
     type = 'text';
   }
