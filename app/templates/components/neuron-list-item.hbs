@@ -16,7 +16,11 @@
             {{#link-to "search" neuron.id}}{{neuron.title}}{{/link-to}}
           </h5>
       {{else}}
-        {{content-editable value=neuron.title tagName="h5" class="media-heading" placeholder="Write title here..." type="text" allowNewlines=false }}
+        {{#if isAudio}}
+          <audio src={{neuron.url}} type="audio/mpeg" controls></audio>
+        {{else}}
+          {{content-editable value=neuron.title tagName="h5" class="media-heading" placeholder="Write title here..." type="text" allowNewlines=false }}
+        {{/if}}
       {{/if}}
 
         <ul class="list-inline">

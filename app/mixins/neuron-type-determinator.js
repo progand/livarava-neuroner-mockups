@@ -11,6 +11,9 @@ export default Ember.Mixin.create({
   isVideo: Ember.computed('model.type', function () {
     return this.get('model.type') === 'video';
   }),
+  isAudio: Ember.computed('neuron.type', function () {
+    return this.get('neuron.type') === 'audio';
+  }),
   hasExternalURL: Ember.computed('model.type', function () {
     return ['image', 'rss', 'video', 'link']
       .includes(this.get('model.type'));

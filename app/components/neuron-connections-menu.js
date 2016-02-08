@@ -27,6 +27,17 @@ export default Ember.Component.extend({
       this.set('imageNeuronRawData', '');
       this.actions.setActiveForm.apply(this);
     },
+    onAudioNeuronRawDataLoad(file){
+      this.set('audioNeuronRawData', file.data);
+    },
+    addAudioNeuron(){
+      if (!this.get('newAudioNeuron')) {
+        return;
+      }
+      this.set('model.connections', [this.get('newAudioNeuron')].concat(this.get('model.connections')));
+      this.set('audioNeuronRawData', '');
+      this.actions.setActiveForm.apply(this);
+    },
     addPostNeuron() {
       if (!this.get('newPostNeuron')) {
         return;
@@ -44,6 +55,9 @@ export default Ember.Component.extend({
   isImageFormActive: Ember.computed('activeForm', function () {
     return this.get('activeForm') === 'image';
   }),
+  isAudioFormActive: Ember.computed('activeForm', function () {
+    return this.get('activeForm') === 'audio';
+  }),
   isPostFormActive: Ember.computed('activeForm', function () {
     return this.get('activeForm') === 'post';
   }),
@@ -52,6 +66,9 @@ export default Ember.Component.extend({
   }),
   newImageNeuron: Ember.computed('imageNeuronRawData', function () {
     return parse(this.get('imageNeuronRawData'), {title: this.get('model.title')});
+  }),
+  newAudioNeuron: Ember.computed('audioNeuronRawData', function () {
+    return parse(this.get('audioNeuronRawData'), {title: this.get('model.title')});
   }),
   newPostNeuron: Ember.computed('postTitle', 'postImage', 'postDescription', function () {
     let postData = {
