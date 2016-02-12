@@ -45,7 +45,7 @@ export default Ember.Component.extend({
       this.set('model.connections', [this.get('newPostNeuron')].concat(this.get('model.connections')));
       this.set('postTitle', '');
       this.set('postImage', '');
-      this.set('postDescription', '');
+      this.set('postText', '');
       this.actions.setActiveForm.apply(this);
     }
   },

@@ -1,0 +1,11 @@
+{{#if comments}}
+    <div class="media neuron-comments">
+        <div class="pull-left">
+            <img class="media-object" src="{{comments.image}}" alt="anchor" width="60">
+        </div>
+        <div class="block-comment">
+            <p><span>username</span> <span class="text-muted">Added:</span> {{moment-to-now comments.created}}</p>
+          {{comments.text}}
+        </div>
+    </div>
+{{/if}}
