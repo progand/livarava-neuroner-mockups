@@ -43,8 +43,11 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-moment": "6.0.0",
+    "express": "^4.13.4",
+    "glob": "^4.5.3",
     "liquid-fire": "0.23.0",
     "moment": "2.11.1",
-    "moment-timezone": "0.5.0"
+    "moment-timezone": "0.5.0",
+    "morgan": "^1.6.1"
   }
 }
