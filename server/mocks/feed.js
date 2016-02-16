@@ -2477,7 +2477,7 @@ module.exports = function (app) {
   };
 
   feed.data = feed.data.map(function (item, index) {
-    return Object.assign({}, {id: index + 1, type: 'profile-feed-item', attributes: item})
+    return {id: index + 1, type: 'profile-feed-item', attributes: item};
   });
 
 
