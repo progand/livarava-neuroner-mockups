@@ -1,1 +1,17 @@
-<p class="alert alert-warning">ToDo: Show comments and comment form here</p>
+<form class="comment-form" {{action 'addCommentNeuron' on='submit'}}>
+    <div class="pull-left">
+        <img class="media-object" src="/img/neurons/person.png" alt="anchor" width="60">
+    </div>
+    <div class="block-comment">
+        <fieldset class="form-group ">
+          {{textarea class="form-control" required="required" placeholder="Live comment..." autofocus="true" value=commentsData}}
+        </fieldset>
+        <div class="user-comment-buttons">
+            <input type="submit" class="btn btn-sm {{unless newCommentsNeuron 'disabled'}}" value="Add comment"/>
+        </div>
+    </div>
+</form>
+
+{{#each model.comments as |text|}}
+  {{neuron-list-comments comments=text}}
+{{/each}}
