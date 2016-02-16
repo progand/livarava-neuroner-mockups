@@ -2594,5 +2594,5 @@ module.exports = function (app) {
   // this mock uncommenting the following line:
   //
   //app.use('/api/feed', require('body-parser'));
-  app.use('/api/feed', feedRouter);
+  app.use('/api/v2/feed', feedRouter);
 };
