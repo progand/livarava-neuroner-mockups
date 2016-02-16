@@ -2476,6 +2476,8 @@ module.exports = function (app) {
     }
   };
 
+  feed.data = feed.data.map((item, index) => Object.assign({}, {id: index + 1, type: 'profile-feed-item', attributes: item}));
+
 
   feedRouter.get('/', function (req, res) {
     res.send(feed);

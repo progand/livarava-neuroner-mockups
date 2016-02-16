@@ -1,1 +1,9 @@
 <h1>Your feed</h1>
+
+{{#each model as |item|}}
+    <p>
+        Author's name: {{item.author.title}}
+        Axon created: {{item.axon.created}}
+    </p>
+
+{{/each}}
