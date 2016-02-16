@@ -12,6 +12,10 @@ export default Ember.Component.extend({
     }
   },
   newCommentsNeuron: Ember.computed('commentsData', function () {
-    return parse(this.get('commentsData'), {title: this.get('model.title'), type: 'comments'});
+    return {
+      created: new Date(),
+      text: this.get('commentsData'),
+      image: 'https://www.livarava.com/static/livarava/img/neurons/person.png'
+    };
   })
 });
