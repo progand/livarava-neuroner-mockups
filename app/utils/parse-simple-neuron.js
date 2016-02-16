@@ -33,7 +33,7 @@ export default function parseSimpleNeuron(raw = "", options = {}) {
     switch (type) {
       case 'comments':
         text = raw;
-        image = '/img/neurons/person.png';
+        image = 'https://www.livarava.com/static/livarava/img/neurons/person.png';
         break;
       case 'rss':
         if (!regexps.url.test(raw)) {

@@ -128,7 +128,8 @@ neurons = neurons.map((neuron, index) => {
     stats: stats,
     created: created,
     feed: feed,
-    id: index + 1
+    id: index + 1,
+    comments: []
   });
 });
 
