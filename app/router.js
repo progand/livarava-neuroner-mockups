@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function () {
   this.route('search', {path: '/neuron/:neuron_id'});
+  this.route('profile-feed');
 });
 
 export default Router;
