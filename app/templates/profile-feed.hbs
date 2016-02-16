@@ -1,9 +1,57 @@
 <h1>Your feed</h1>
 
 {{#each model as |item|}}
-    <p>
-        Author's name: {{item.author.title}}
-        Axon created: {{item.axon.created}}
-    </p>
+    <div class="feed-item container-fluid image-with-white-border-and-shadow">
+        <div class="feed-item-header">
 
+            <div class="feed-item-author-image">
+                <img src="{{item.author.image}}"/>
+            </div>
+
+            <div class="feed-item-info">
+                <div class="">
+                    <b>Author's name: {{item.author.title}}</b>
+                    <span class="feed-item-stub-text">created new akson for neuron</span>
+                </div>
+
+                <div class="feed-item-info-data">
+                    Axon created: {{item.axon.created}}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="axon-preview row">
+            <div class="col-sm-6">
+                <div class="axon-preview-neuron clearfix">
+                    <a class="axon-preview-neuron-link" href="/neuron/1/">
+                    <span class="axon-preview-livarava-icon image-with-white-border-and-shadow axon-preview-livarava-icon-liva">Liva</span>
+
+                    <div class="text-center axon-preview-neuron-image-wrapper">
+                        <span class="cover-image cover-image-round-200 image-with-white-border-and-shadow" title="test"></span>
+                    </div>
+                    <p class="axon-preview-neuron-header feed-item-stub-text"><span class="feed-item-stub-text"></span></p>
+                </a>
+
+                    <div class="axon-preview-neuron-summary">
+                        <span class="feed-item-stub-text">{{item.liva.summary}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="axon-preview-neuron clearfix"><a class="axon-preview-neuron-link" href="/neuron/8/"><span
+                        class="axon-preview-livarava-icon image-with-white-border-and-shadow axon-preview-livarava-icon-liva">Rava</span>
+
+                    <div class="text-center axon-preview-neuron-image-wrapper"><span
+                            class="cover-image cover-image-round-200 image-with-white-border-and-shadow"
+                            title=""></span></div>
+                    <p class="axon-preview-neuron-header"><span class="feed-item-stub-text"></span></p></a>
+
+                    <div class="axon-preview-neuron-summary"><span class="feed-item-stub-text"></span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 {{/each}}
