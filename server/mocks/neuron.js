@@ -1529,6 +1529,7 @@ module.exports = function (app) {
   });
 
   neuronRouter.get('/:id', function (req, res) {
+    data.id = req.query.id;
     res.send(data);
   });
 
