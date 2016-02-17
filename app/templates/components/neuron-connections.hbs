@@ -1,5 +1,9 @@
 {{yield}}
-
+<form class="filter-neuron-form">
+    <fieldset class="form-group">
+      {{input type="text" class="form-control pull-left input-filter-neuron" placeholder="Filter neuron" value=filter}}
+    </fieldset>
+</form>
 {{#each visibleItems as |neuron|}}
   {{neuron-list-item neuron=neuron}}
 {{/each}}
