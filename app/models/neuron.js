@@ -16,5 +16,11 @@ export default DS.Model.extend({
   comments: DS.attr({defaultValue: []}),
   commentsCount: DS.attr('number'),
 
-  connections: DS.attr()
+  connections: DS.attr(),
+
+  imageUrl: DS.attr('string'),
+  mainImageUrl: DS.attr('string'),
+  mainImage: Ember.computed('imageUrl', 'mainImageUrl', function () {
+    return this.get('mainImageUrl') || this.get('imageUrl');
+  })
 });

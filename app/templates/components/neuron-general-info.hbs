@@ -51,9 +51,9 @@
 
 {{#if hasExternalURL}}
     <div class="clearfix m-b-2">
-      {{#if model.image}}
-          <a href="model.image" target="_blank">
-              <img src="{{model.image}}" alt="{{model.title}}" class="img-fluid"/>
+      {{#if model.mainImage}}
+          <a href="{{model.mainImage}}" target="_blank">
+              <img src="{{model.mainImage}}" alt="{{model.mainImage}}" class="img-fluid"/>
           </a>
       {{else if isVideo}}
           <div class="embed-responsive embed-responsive-16by9">
