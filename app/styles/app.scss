@@ -9,6 +9,7 @@
 @mixin right-panel-position {
   top: 54px;
   right: 0;
+  z-index: 1;
 }
 
 .right-panel {
@@ -29,7 +30,7 @@
 .right-panel--toggle-button {
   @include right-panel-position;
 
-  position: absolute;
+  position: fixed;
 }
 
 .comment-form .block-comment, .media .block-comment {
