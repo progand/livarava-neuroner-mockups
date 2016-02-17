@@ -22,7 +22,7 @@ export default Ember.Mixin.create({
       .includes(this.get('model.type'));
   }),
   hasSpecificInfo: Ember.computed('model.type', function () {
-    return ['rss', 'post']
+    return ['rss', 'post', 'project', 'product', 'event']
       .includes(this.get('model.type'));
   })
 });

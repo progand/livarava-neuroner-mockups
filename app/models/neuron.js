@@ -10,24 +10,24 @@ export default DS.Model.extend({
   axonCount: DS.attr('number'),
 
   summary: DS.attr('string'),
-
-  image: DS.attr('string'),
-  linkUrl: DS.attr('string'),
   created: DS.attr('date'),
-  connections: DS.attr(),
-  comments: DS.attr({defaultValue: []}),
 
-  link_url: DS.attr('string'),
-  image_url: DS.attr('string'),
-  video_url: DS.attr('string'),
-  project_url: DS.attr('string'),
-  product_url: DS.attr('string'),
-  event_url: DS.attr('string'),
+  comments: DS.attr({defaultValue: []}),
+  commentsCount: DS.attr('number'),
+
+  connections: DS.attr(),
+
+  linkUrl: DS.attr('string'),
+  imageUrl: DS.attr('string'),
+  videoUrl: DS.attr('string'),
+  projectUrl: DS.attr('string'),
+  productUrl: DS.attr('string'),
+  eventUrl: DS.attr('string'),
 
   url: Ember.computed('type', function () {
-    return this.get(`${this.get('type')}_url`);
+    return this.get(`${this.get('type')}Url`);
   }),
-  image: Ember.computed('image_url', function () {
-    return this.get('image_url');
+  image: Ember.computed('imageUrl', function () {
+    return this.get('imageUrl');
   })
 });
