@@ -14,7 +14,7 @@ module.exports = function (app) {
               "axon_count": 4,
               "created": "2016-02-14 09:38:28",
               "header": "Apache Wicket",
-              "id": 38566,
+              "id": 0,
               "image": "/static/livarava/img/neurons/text.png",
               "meta_author": "\u0410\u043d\u0434\u0440\u0435\u0439 \u0421\u043e\u043a\u043e\u043b\u043e\u0432",
               "meta_keywords": "Apache Wicket,JavaScript,Java,HTML5,Framework,AJAX,Apache,Home | Apache Wicket,open source",

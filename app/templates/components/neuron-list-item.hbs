@@ -1,6 +1,6 @@
 <div class="media">
     <div class="media-left">
-      {{#if neuron.id}}
+      {{#if hasId}}
         {{#link-to route neuron.id}}
             <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
         {{/link-to}}
@@ -11,7 +11,7 @@
     </div>
 
     <div class="media-body">
-      {{#if neuron.id}}
+      {{#if hasId}}
           <h5 class="media-heading">
             {{#link-to route neuron.id}}{{neuron.title}}{{/link-to}}
           </h5>
