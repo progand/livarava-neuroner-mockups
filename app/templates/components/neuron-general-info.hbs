@@ -32,6 +32,21 @@
           {{/if}}
         </span>
     </li>
+  {{#if model.created}}
+      <li class="list-inline-item">
+          <i class="fa fa-calendar-minus-o"></i>
+        <span class="text-muted">
+          {{moment-from-now model.created}}
+        </span>
+      </li>
+  {{/if}}
+  {{#if model.type}}
+      <li class="list-inline-item">
+        <span class="label label-default">
+          {{model.type}}
+        </span>
+      </li>
+  {{/if}}
 </ul>
 
 {{#if hasExternalURL}}
