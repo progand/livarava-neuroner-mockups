@@ -18,7 +18,7 @@ export default Ember.Mixin.create({
     return this.get('neuron.type') === 'audio';
   }),
   hasExternalURL: Ember.computed('model.type', function () {
-    return ['image', 'rss', 'video', 'link']
+    return this.get('model.url') || ['image', 'rss', 'video', 'link']
       .includes(this.get('model.type'));
   }),
   hasSpecificInfo: Ember.computed('model.type', function () {

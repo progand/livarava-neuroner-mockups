@@ -3,15 +3,34 @@
 <ul class="list-inline">
     <li class="list-inline-item">
         <i class="fa fa-user"></i>
-        <span class="label label-info">{{model.stats.users}}</span>
+        <span class="label label-info">
+          {{#if model.stats}}
+            {{model.stats.users}}
+          {{else}}
+            {{model.subscriberCount}}
+          {{/if}}
+
+        </span>
     </li>
     <li class="list-inline-item">
         <i class="fa fa-link"></i>
-        <span class="label label-primary">{{model.stats.axons}}</span>
+        <span class="label label-primary">
+          {{#if model.stats}}
+            {{model.stats.axons}}
+          {{else}}
+            {{model.axonCount}}
+          {{/if}}
+        </span>
     </li>
     <li class="list-inline-item">
         <i class="fa fa-eye"></i>
-        <span class="label label-success">{{model.stats.views}}</span>
+        <span class="label label-success">
+          {{#if model.stats}}
+            {{model.stats.views}}
+          {{else}}
+            {{model.views}}
+          {{/if}}
+        </span>
     </li>
 </ul>
 
@@ -26,7 +45,8 @@
               <iframe class="embed-responsive-item" src="{{model.url}}"></iframe>
           </div>
       {{/if}}
-        <a href="{{model.url}}" target="_blank" class="btn btn-link"><i class="fa fa-external-link-square"></i> Go to original website...</a>
+        <a href="{{model.url}}" target="_blank" class="btn btn-link"><i class="fa fa-external-link-square"></i> Go to
+            original website...</a>
     </div>
 {{/if}}
 
@@ -47,7 +67,12 @@
 
 <div class="m-a-1 text-muted">
   {{#if showingDescription}}
-    {{content-editable value=model.description  placeholder="Edit description..." type="text"}}
+    {{#if model.summary}}
+      {{content-editable value=model.summary  placeholder="Edit description..." type="text"}}
+    {{else}}
+      {{content-editable value=model.description  placeholder="Edit description..." type="text"}}
+    {{/if}}
+
   {{else}}
     {{#if hasExternalURL}}
         <a href="{{model.url}}" class="text-success" target="_blank">

@@ -1502,6 +1502,7 @@ module.exports = function (app) {
         "meta_image": "/static/livarava/img/projects/livarava-logo-black-400x400.png",
         "meta_keywords": "LivaRava",
         "meta_title": "LivaRava - LivaRava",
+        "project_url": "https://www.facebook.com/livarava",
         "slug": "livarava",
         "subscriber_count": 17,
         "summary": "Associative web or associative social search engine. Knowledge management system.\n\nWe are building LivaRava as associative web or associative social search engine, which uses keywords, images, sounds, videos and links to build associations. The advantage of LivaRava is that it speeds up search of the relevant information.",
