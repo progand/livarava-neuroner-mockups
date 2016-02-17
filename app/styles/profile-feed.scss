@@ -4,7 +4,7 @@
 }
 
 .head-feed {
-  width: 600px;
+  max-width: 600px;
   margin: 0 auto;
 }
 .datetime {
@@ -52,7 +52,7 @@
 }
 
 .feed-item {
-  width: 600px;
+  max-width: 600px;
   border: 1px solid #ccc !important;
   border-radius: 3px;
   margin-bottom: 1.5em;
