@@ -2,10 +2,10 @@
     <div class="media-left">
       {{#if neuron.id}}
         {{#link-to route neuron.id}}
-            <img class="media-object feed-item-image" src="{{image}}" alt="{{neuron.title}}" width="60">
+            <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
         {{/link-to}}
       {{else}}
-          <img class="media-object feed-item-image" src="{{image}}" alt="{{neuron.title}}" width="60">
+          <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
       {{/if}}
 
     </div>
@@ -26,7 +26,8 @@
           <div>{{truncate neuron.text}}</div>
       {{/if}}
         <ul class="list-inline">
-            <li><span class="text-muted">Added:</span> {{moment-from-now neuron.created}}</li>
+            <li class="list-inline-item"><span class="text-muted">Added:</span> {{moment-from-now neuron.created}}</li>
+            <li class="list-inline-item"><span class="label label-default">{{neuron.type}}</span></li>
         </ul>
     </div>
 </div>
