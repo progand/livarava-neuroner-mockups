@@ -4,7 +4,7 @@ module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'livarava-neuroner-mockups',
     environment: environment,
-    baseURL: '/',
+    baseURL: '/ui',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
