@@ -5,14 +5,17 @@
             <li class="nav-item active">
               {{#link-to "index" class="nav-link"}}<i class="fa fa-home"></i> Home{{/link-to}}
             </li>
+            <li class="nav-item active">
+              {{#link-to "search-examples" class="nav-link"}}<i class="fa fa-link"></i> Examples{{/link-to}}
+            </li>
         </ul>
     </div>
 </nav>
 
 {{#neuron-advertisement}}{{outlet}}{{/neuron-advertisement}}
 
-<footer class="bg-faded">
-    <div class="container text-muted">
+<footer class="bg-success text-center p-t-1 p-b-1">
+    <div class="container">
         Designed and built with all the love in the world by LivaRava Team
     </div>
 </footer>

@@ -9,6 +9,7 @@ Router.map(function () {
   this.route('search', {path: '/search/:neuron_id'});
   this.route('profile-feed');
   this.route('neuron', {path: '/neuron/:neuron_id'});
+  this.route('search-examples');
 });
 
 export default Router;
