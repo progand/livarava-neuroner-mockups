@@ -23,11 +23,12 @@ export default DS.Model.extend({
   projectUrl: DS.attr('string'),
   productUrl: DS.attr('string'),
   eventUrl: DS.attr('string'),
+  mainImageUrl: DS.attr('string'),
 
   url: Ember.computed('type', function () {
     return this.get(`${this.get('type')}Url`);
   }),
-  image: Ember.computed('imageUrl', function () {
-    return this.get('imageUrl');
+  image: Ember.computed('imageUrl', 'mainImageUrl', function () {
+    return this.get('imageUrl') || this.get('mainImageUrl');
   })
 });

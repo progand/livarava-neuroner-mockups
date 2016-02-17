@@ -1,11 +1,11 @@
 <div class="media">
     <div class="media-left">
       {{#if neuron.id}}
-        {{#link-to "search" neuron.id}}
-            <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
+        {{#link-to route neuron.id}}
+            <img class="media-object feed-item-image" src="{{image}}" alt="{{neuron.title}}" width="60">
         {{/link-to}}
       {{else}}
-          <img class="media-object feed-item-image" src="{{neuron.image}}" alt="{{neuron.title}}" width="60">
+          <img class="media-object feed-item-image" src="{{image}}" alt="{{neuron.title}}" width="60">
       {{/if}}
 
     </div>
@@ -13,7 +13,7 @@
     <div class="media-body">
       {{#if neuron.id}}
           <h5 class="media-heading">
-            {{#link-to "search" neuron.id}}{{neuron.title}}{{/link-to}}
+            {{#link-to route neuron.id}}{{neuron.title}}{{/link-to}}
           </h5>
       {{else}}
         {{#if isAudio}}
