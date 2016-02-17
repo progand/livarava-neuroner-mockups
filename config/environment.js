@@ -19,6 +19,7 @@ module.exports = function (environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
+      'connect-src': "'self' * ",
       'img-src': "'self' * data:",
       'style-src': "'self' 'unsafe-inline' *",
       'media-src': "'self' * data:"

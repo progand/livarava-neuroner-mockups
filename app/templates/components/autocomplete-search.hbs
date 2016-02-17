@@ -1,0 +1,10 @@
+{{hyper-search
+endpoint="http://localhost:3000/api/v2/autocomplete/neurons/"
+placeholder="Search for neurons"
+selectResult=(action "selectResult")
+handleResults=(action "handleResults")
+}}
+
+{{#each autocompletes as |item|}}
+  {{item.title}}
+{{/each}}
