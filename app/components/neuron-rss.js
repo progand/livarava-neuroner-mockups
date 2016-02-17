@@ -2,9 +2,6 @@ import Ember from 'ember';
 import ShowMoreListMixin from '../mixins/show-more-list';
 
 export default Ember.Component.extend(ShowMoreListMixin, {
-  options: {
-    showingText: false
-  },
   actions: {
     onNeuronIt(item){
       this.set('model.feed', _(this.get('model.feed'))
