@@ -331,6 +331,7 @@ module.exports = function (app) {
           "title": "JavaScript",
           "type": "text",
           "uid": "d9fdcb4a-ab9e-11e4-adda-040105750d01",
+          "url": "https://wicket.apache.org/",
           "updated": "2016-02-16 16:53:58",
           "views": 212,
           "weight": 23
