@@ -5,7 +5,7 @@ export default Ember.Component.extend(ShowMoreListMixin, {
   filter: '',
   items: Ember.computed('model.connections', 'filter', function () {
     return this.get('model.connections').filter((item) => {
-      return item && item.title && _.includes(item.title, this.get('filter'));
+      return item.title.toLowerCase().includes(this.get('filter').toLowerCase());
     });
   })
 });
