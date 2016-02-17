@@ -40,3 +40,21 @@
 .neuron-comments, .comment-form {
   margin-bottom: 20px;
 }
+
+.btn-show-advertisement {
+  position: absolute;
+  right: 0;
+}
+
+.container {
+  position: relative;
+}
+
+
+// test button
+
+
+.btn-show-advertisement {
+    -webkit-animation: myfirst 5s linear 2s infinite alternate;
+    animation: myfirst 5s linear 2s infinite alternate;
+}

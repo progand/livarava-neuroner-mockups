@@ -17,4 +17,8 @@
       </div>
   {{/if}}
 
+  {{#unless isOpen}}
+    <button type="button" class="btn btn-info btn-sm btn-show-advertisement fa fa-arrows-h" {{action 'onClose'}}></button>
+  {{/unless}}
+
 </article>
