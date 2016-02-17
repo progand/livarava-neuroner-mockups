@@ -1,16 +1,29 @@
 <nav class="navbar navbar-light bg-faded m-b-3">
     <div class="container">
-        {{#link-to "index" class="navbar-brand"}}LivaRava{{/link-to}}
+      {{#link-to "index" class="navbar-brand"}}LivaRava{{/link-to}}
         <ul class="nav navbar-nav">
             <li class="nav-item active">
-                {{#link-to "index" class="nav-link"}}<i class="fa fa-home"></i> Home{{/link-to}}
+              {{#link-to "index" class="nav-link"}}<i class="fa fa-home"></i> Home{{/link-to}}
             </li>
         </ul>
     </div>
 </nav>
 
 <article class="container m-t-2 m-b-3">
-  {{outlet}}
+    <div class="col-md-8">
+      {{outlet}}
+    </div>
+    <div class="col-md-4">
+        <div class="clearfix">
+            <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="bg-faded text-center p-a-3 m-b-1">Google Ad</div>
+        <div class="bg-success text-center p-a-3 m-b-1">Suggestions</div>
+        <div class="bg-info text-center p-a-3 m-b-1">Other info</div>
+    </div>
 </article>
 
 <footer class="bg-faded">
