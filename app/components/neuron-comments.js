@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import parse from '../utils/parse-simple-neuron';
 
 export default Ember.Component.extend({
   actions: {
