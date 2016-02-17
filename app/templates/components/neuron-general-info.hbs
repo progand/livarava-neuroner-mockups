@@ -1,37 +1,43 @@
 {{content-editable value=model.title tagName="h1" placeholder="Input title here..." type="text" allowNewlines=false }}
 
 <ul class="list-inline">
-    <li class="list-inline-item">
-        <i class="fa fa-user"></i>
-        <span class="label label-info">
-          {{#if model.stats}}
-            {{model.stats.users}}
-          {{else}}
-            {{model.subscriberCount}}
-          {{/if}}
+  {{#if model.stats}}
 
-        </span>
-    </li>
-    <li class="list-inline-item">
-        <i class="fa fa-link"></i>
-        <span class="label label-primary">
-          {{#if model.stats}}
-            {{model.stats.axons}}
-          {{else}}
-            {{model.axonCount}}
-          {{/if}}
-        </span>
-    </li>
-    <li class="list-inline-item">
-        <i class="fa fa-eye"></i>
-        <span class="label label-success">
-          {{#if model.stats}}
-            {{model.stats.views}}
-          {{else}}
-            {{model.views}}
-          {{/if}}
-        </span>
-    </li>
+    {{#if model.stats.users}}
+        <li class="list-inline-item">
+            <i class="fa fa-user"></i> <span class="label label-info">{{model.stats.users}}</span>
+        </li>
+    {{/if}}
+    {{#if model.stats.axons}}
+        <li class="list-inline-item">
+            <i class="fa fa-link"></i> <span class="label label-primary">{{model.stats.axons}}</span>
+        </li>
+    {{/if}}
+    {{#if model.stats.views}}
+        <li class="list-inline-item">
+            <i class="fa fa-eye"></i> <span class="label label-success">{{model.stats.views}}</span>
+        </li>
+    {{/if}}
+
+  {{else}}
+    {{#if model.subscriberCount}}
+        <li class="list-inline-item">
+            <i class="fa fa-user"></i> <span class="label label-info">{{model.subscriberCount}}</span>
+        </li>
+    {{/if}}
+    {{#if model.axonCount}}
+        <li class="list-inline-item">
+            <i class="fa fa-link"></i> <span class="label label-primary">{{model.axonCount}}</span>
+        </li>
+    {{/if}}
+    {{#if model.views}}
+        <li class="list-inline-item">
+            <i class="fa fa-eye"></i> <span class="label label-success">{{model.views}}</span>
+        </li>
+    {{/if}}
+
+  {{/if}}
+
   {{#if model.created}}
       <li class="list-inline-item">
           <i class="fa fa-calendar-minus-o"></i>
