@@ -6,7 +6,7 @@ export default Ember.Component.extend(NeuronDeterminator, {
 
   init(){
     this._super.apply(this, arguments);
-    this.set('showing', false && this.get('hasSpecificInfo') ? 'info' : 'connections');
+    this.set('showing', this.get('hasSpecificInfo') ? 'info' : 'connections');
   },
 
   actions: {

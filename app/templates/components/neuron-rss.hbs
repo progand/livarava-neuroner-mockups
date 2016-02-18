@@ -1,5 +1,11 @@
 <h4>RSS Feed</h4>
 
+<form class="">
+    <fieldset class="form-group">
+      {{input type="text" class="form-control input-filter-neuron" placeholder="Keyword" value=filter}}
+    </fieldset>
+</form>
+
 {{#each visibleItems as |rssFeedItem|}}
     <div class="media">
         <div class="media-left">
@@ -10,11 +16,12 @@
 
         <div class="media-body">
             <h5 class="media-heading ">
-                <a href="{{rssFeedItem.url}}" target="_blank">{{rssFeedItem.title}}
-                </a>
+                <a href="{{rssFeedItem.url}}" target="_blank">{{{rssFeedItem.title}}}</a>
             </h5>
 
-            <button class="btn btn-secondary btn-sm pull-sm-right"
+            <p>{{{rssFeedItem.text}}}</p>
+
+            <button class="btn btn-secondary btn-sm pull-sm-right" disabled
                     title="Create new neuron" {{action "onNeuronIt" rssFeedItem}}>Neuron it!
             </button>
             <ul class="list-inline">
