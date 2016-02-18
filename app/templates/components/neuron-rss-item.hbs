@@ -12,7 +12,7 @@
     <p>
       {{#if expanded}}
         {{{item.text}}}
-        <br>
+          <br>
           <a href="" {{action "toggleText"}}>Less...</a>
       {{else}}
         {{{truncate item.text length=200 omission=''}}}
