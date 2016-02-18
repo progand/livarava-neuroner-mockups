@@ -1,12 +1,14 @@
 <div class="media-left">
     <a href="{{item.url}}" target="_blank">
-        <img class="media-object feed-item-image" src="{{if item.image item.image 'https://www.livarava.com/static/livarava/img/neurons/link.png'}}" alt="{{item.title}}"/>
+        <img class="media-object feed-item-image"
+             src="{{if item.image item.image 'https://www.livarava.com/static/livarava/img/neurons/link.png'}}"
+             alt="{{item.title}}"/>
     </a>
 </div>
 
 <div class="media-body">
     <h5 class="media-heading ">
-        <a href="{{item.url}}" target="_blank">{{{item.title}}}</a>
+        <a href="{{item.url}}" target="_blank">{{{title}}}</a>
     </h5>
 
     <div class="m-b-1">
@@ -14,11 +16,10 @@
         {{{text}}}
           <div><a href="" {{action "toggleText"}}>...Less</a></div>
       {{else}}
-        {{{truncate text length=200}}}
-         <div><a href="" {{action "toggleText"}}>Read more</a></div>
+        {{{truncate text length=150}}}
+          <div><a href="" {{action "toggleText"}}>Read more</a></div>
 
       {{/if}}
-
     </div>
 
     <button class="btn btn-secondary btn-sm pull-sm-right" disabled
@@ -26,7 +27,7 @@
     </button>
     <ul class="list-inline">
         <li class="list-inline-item text-muted" title="Published"><i
-                class="fa fa-calendar-check-o"></i> {{moment-from-now item.date}}</li>
+                class="fa fa-calendar-check-o"></i> {{moment-from-now item.date}} </li>
         <li class="list-inline-item"></li>
     </ul>
 

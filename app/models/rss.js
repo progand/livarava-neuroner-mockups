@@ -10,7 +10,7 @@ export default DS.Model.extend({
   image: DS.attr('string'),
 
   url: Ember.computed.oneWay('guid'),
-  date: Ember.computed('pub_date', function(){
+  date: Ember.computed('pubDate', function(){
     return moment(this.get('pubDate')).toDate();
   })
 });

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   expanded: false,
+  filter: '',
   classNames: ['media'],
 
   actions: {
@@ -10,8 +11,16 @@ export default Ember.Component.extend({
     }
   },
 
-  text: Ember.computed('item.text', function () {
+  title: Ember.computed('filter', function () {
+    let regexp = new RegExp(this.get('filter'), 'i');
+
+    return this.get('item.title')
+      .replace(regexp, `<span class="bg-warning">$&</span>`);
+  }),
+  text: Ember.computed('filter', function () {
+    let regexp = new RegExp(this.get('filter'), 'i');
+
     return this.get('item.text')
-      .replace(/<br\s*[\/]?>/gi, '');
+      .replace(regexp, `<span class="bg-warning">$&</span>`);
   })
 });

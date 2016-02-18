@@ -16,7 +16,7 @@ export default Ember.Component.extend(ShowMoreListMixin, {
     return this.get('model.feed').filter(item => {
       return item.get('title').toLowerCase().includes(this.get('filter').toLowerCase()) ||
         item.get('text').toLowerCase().includes(this.get('filter').toLowerCase());
-    }).map(item => {
+    })/*.map(item => {
       let regexp = new RegExp(this.get('filter'), 'i');
 
       return _.assign({}, item, {
@@ -25,6 +25,6 @@ export default Ember.Component.extend(ShowMoreListMixin, {
         text: item.get('text')
           .replace(regexp, `<span class="bg-warning">$&</span>`)
       });
-    });
+    })*/;
   })
 });
