@@ -1,6 +1,6 @@
 <div class="media-left">
     <a href="{{item.url}}" target="_blank">
-        <img class="media-object feed-item-image" src="{{item.image}}" alt="{{item.title}}"/>
+        <img class="media-object feed-item-image" src="{{if item.image item.image 'https://www.livarava.com/static/livarava/img/neurons/link.png'}}" alt="{{item.title}}"/>
     </a>
 </div>
 
@@ -9,18 +9,17 @@
         <a href="{{item.url}}" target="_blank">{{{item.title}}}</a>
     </h5>
 
-    <p>
+    <div class="m-b-1">
       {{#if expanded}}
-        {{{item.text}}}
-          <br>
-          <a href="" {{action "toggleText"}}>Less...</a>
+        {{{text}}}
+          <div><a href="" {{action "toggleText"}}>...Less</a></div>
       {{else}}
-        {{{truncate item.text length=200 omission=''}}}
-          <br>
-          <a href="" {{action "toggleText"}}>Read more...</a>
+        {{{truncate text length=200}}}
+         <div><a href="" {{action "toggleText"}}>Read more</a></div>
+
       {{/if}}
 
-    </p>
+    </div>
 
     <button class="btn btn-secondary btn-sm pull-sm-right" disabled
             title="Create new neuron" {{action "onNeuronIt" item}}>Neuron it!

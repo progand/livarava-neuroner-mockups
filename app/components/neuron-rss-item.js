@@ -8,5 +8,10 @@ export default Ember.Component.extend({
     toggleText(){
       this.toggleProperty('expanded');
     }
-  }
+  },
+
+  text: Ember.computed('item.text', function () {
+    return this.get('item.text')
+      .replace(/<br\s*[\/]?>/gi, '');
+  })
 });

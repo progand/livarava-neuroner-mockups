@@ -14,14 +14,16 @@ export default Ember.Component.extend(ShowMoreListMixin, {
 
   items: Ember.computed('filter', function () {
     return this.get('model.feed').filter(item => {
-      return item.title.toLowerCase().includes(this.get('filter').toLowerCase()) ||
-        item.text.toLowerCase().includes(this.get('filter').toLowerCase());
+      return item.get('title').toLowerCase().includes(this.get('filter').toLowerCase()) ||
+        item.get('text').toLowerCase().includes(this.get('filter').toLowerCase());
     }).map(item => {
       let regexp = new RegExp(this.get('filter'), 'i');
 
       return _.assign({}, item, {
-        title: item.title.replace(regexp, `<span class="bg-warning">$&</span>`),
-        text: item.text.replace(regexp, `<span class="bg-warning">$&</span>`)
+        title: item.get('title')
+          .replace(regexp, `<span class="bg-warning">$&</span>`),
+        text: item.get('text')
+          .replace(regexp, `<span class="bg-warning">$&</span>`)
       });
     });
   })

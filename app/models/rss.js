@@ -6,9 +6,11 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   text: DS.attr('string'),
   guid: DS.attr('string'),
-  pubDate: DS.attr('date'),
-  image: DS.attr('string', {defaultValue: 'image: "https://www.livarava.com/static/livarava/img/neurons/link.png'}),
+  pubDate: DS.attr('string'),
+  image: DS.attr('string'),
 
   url: Ember.computed.oneWay('guid'),
-  date: Ember.computed.oneWay('pub_date')
+  date: Ember.computed('pub_date', function(){
+    return moment(this.get('pubDate')).toDate();
+  })
 });

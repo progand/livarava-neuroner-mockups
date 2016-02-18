@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 let neurons = [
   {
     title: 'RSS Feed',
@@ -85,6 +87,15 @@ let neurons = [
     }]
   },
   {
+    title: 'RSS Interfax',
+    description: 'RSS feed of Ukrainian Interfax.',
+    url: 'http://interfax.com.ua/news/last.rss',
+    image: "https://www.livarava.com/static/livarava/img/neurons/rss.png",
+    type: 'rss',
+    type_title: 'RSS',
+    loadRSS: true
+  },
+  {
     "title": "Are You Ready to Seek Funding? This 10-Point Checklist Will Decide.",
     "image": "https://www.livarava.com/static/livarava/img/neurons/link.png",
     "url": "http://www.entrepreneur.com/article/248777",
@@ -161,7 +172,7 @@ neurons = neurons.map((neuron, index) => {
 
   if (neuron.type === 'rss' && !_.isEmpty(neuron.feed)) {
     feed = _(neuron.feed).map(feedItem => {
-        return _.extend(feedItem, {
+        return Ember.Object.create(_.extend(feedItem, {
           date: new Date(_.random(datesFrom, Date.now())),
           image: "https://www.livarava.com/static/livarava/img/neurons/link.png",
           "text": feedItem.text + `Lorem ipsum dolor sit amet, prima elaboraret in eum, ex nibh bonorum definitiones pri. Simul albucius id sea, ut cum adhuc consetetur, novum consulatu te eam. Adhuc praesent necessitatibus mea eu. Audire appellantur an eum, his id natum novum consetetur. Cu per ceteros appareat constituto.
@@ -170,7 +181,7 @@ neurons = neurons.map((neuron, index) => {
               An duo platonem suavitate. Quo facer offendit torquatos ex, sea summo petentium ad. Vim ei dolores phaedrum. Movet possit essent mel ea, wisi signiferumque ius in, ut his tempor cetero omittantur. Cu tale enim has, eam soleat oporteat facilisi an, ne usu accumsan explicari iracundia.
               Mea oporteat insolens voluptatibus ex. Ut per saepe eirmod. Mei docendi imperdiet reprehendunt cu, errem appetere argumentum sea ad. Quot probo ponderum in est, eu facilis interpretaris quo.`
 
-        });
+        }));
       })
       .orderBy('date', 'desc')
       .value();
