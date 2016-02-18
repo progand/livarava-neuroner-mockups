@@ -7,36 +7,13 @@
 </form>
 
 {{#each visibleItems as |rssFeedItem|}}
-    <div class="media">
-        <div class="media-left">
-            <a href="{{rssFeedItem.url}}" target="_blank">
-                <img class="media-object feed-item-image" src="{{rssFeedItem.image}}" alt="{{rssFeedItem.title}}"/>
-            </a>
-        </div>
-
-        <div class="media-body">
-            <h5 class="media-heading ">
-                <a href="{{rssFeedItem.url}}" target="_blank">{{{rssFeedItem.title}}}</a>
-            </h5>
-
-            <p>{{{rssFeedItem.text}}}</p>
-
-            <button class="btn btn-secondary btn-sm pull-sm-right" disabled
-                    title="Create new neuron" {{action "onNeuronIt" rssFeedItem}}>Neuron it!
-            </button>
-            <ul class="list-inline">
-                <li class="list-inline-item text-muted" title="Published"><i class="fa fa-calendar-check-o"></i> {{moment-from-now rssFeedItem.date}}</li>
-                <li class="list-inline-item"></li>
-            </ul>
-
-        </div>
-    </div>
+  {{neuron-rss-item item=rssFeedItem}}
 {{/each}}
+
 {{#if hasMore}}
     <div class="m-t-2">
         <button class="btn btn-primary center-block" {{action "showMore"}}>More</button>
     </div>
 {{/if}}
-
 
 {{yield}}
