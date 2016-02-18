@@ -10,6 +10,7 @@ Router.map(function () {
   this.route('neuron', {path: '/neuron/:neuron_id'});
   this.route('search-examples');
   this.route('autocomplete');
+  this.route('new-neuron');
 });
 
 export default Router;
