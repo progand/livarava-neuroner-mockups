@@ -17,9 +17,11 @@ export default Ember.Component.extend(ShowMoreListMixin, {
       return item.title.toLowerCase().includes(this.get('filter').toLowerCase()) ||
         item.text.toLowerCase().includes(this.get('filter').toLowerCase());
     }).map(item => {
+      let regexp = new RegExp(this.get('filter'), 'i');
+
       return _.assign({}, item, {
-        title: item.title.replace(this.get('filter'), `<span class="bg-warning">${this.get('filter')}</span>`),
-        text: item.text.replace(this.get('filter'), `<span class="bg-warning">${this.get('filter')}</span>`)
+        title: item.title.replace(regexp, `<span class="bg-warning">$&</span>`),
+        text: item.text.replace(regexp, `<span class="bg-warning">$&</span>`)
       });
     });
   })
