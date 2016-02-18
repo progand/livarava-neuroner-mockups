@@ -25,8 +25,7 @@
                     title="Create new neuron" {{action "onNeuronIt" rssFeedItem}}>Neuron it!
             </button>
             <ul class="list-inline">
-                <li class="list-inline-item"><span
-                        class="text-muted">Published:</span> {{moment-from-now rssFeedItem.date}}</li>
+                <li class="list-inline-item text-muted" title="Published"><i class="fa fa-calendar-check-o"></i> {{moment-from-now rssFeedItem.date}}</li>
                 <li class="list-inline-item"></li>
             </ul>
 
